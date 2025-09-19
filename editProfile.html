@@ -1,0 +1,413 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input {
+                background-color: transparent;
+                border-radius: 0rem;
+                border-bottom: 1px solid #00f;
+                padding: 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            select {
+                background-color: transparent;
+                border-radius: 0rem;
+                border-bottom: 1px solid #00f;
+                padding: 0.5rem;
+                font-size: 0.7rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;">
+            <div style="
+                display: flex;
+                background-color: #00f;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;"
+                    id="btnBack">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    min-width: 0;
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;">
+                    HealthTipid
+                </div>
+            </div>
+            <div style="
+                position: relative;
+                flex: 1;
+                min-width: 0;">
+                <div style="
+                    box-sizing: border-box;
+                    height: 100%;
+                    overflow: auto;">
+                    <div style="
+                        padding: 1rem;
+                        text-align: center;
+                        font-size: 1.5rem;
+                        font-weight: bold;">
+                        Edit Account Details
+                    </div>
+                    <div style="
+                        padding: 1rem;">
+                        Full Name<span style="color: #f00">*</span>
+                    </div>
+                    <div style="
+                        display: flex;">
+                        <div style="
+                            flex: 1;
+                            min-width: 0;
+                            padding: 1rem;
+                            padding-top: 0rem;">
+                            <input id="inputFirstName"
+                                placeholder="First name">
+                        </div>
+                        <div style="
+                            flex: 1;
+                            min-width: 0;
+                            padding: 1rem;
+                            padding-left: 0rem;
+                            padding-top: 0rem;">
+                            <input id="inputLastName"
+                                placeholder="Last name">
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-left: 0rem;
+                            padding-top: 0rem;">
+                            <input style="
+                                width: 3rem;"
+                                id="inputMiddleInitial"
+                                placeholder="MI">
+                        </div>
+                    </div>
+                    <div style="
+                        display: flex;">
+                        <div style="
+                            flex: 1;
+                            min-width: 0;">
+                            <div style="
+                                padding: 1rem;">
+                                Date of Birth<span style="color: #f00">*</span>
+                            </div>
+                            <div style="
+                                padding: 1rem;
+                                padding-top: 0rem;">
+                                <input type="date"
+                                    id="inputBirthdate">
+                            </div>
+                        </div>
+                        <div style="
+                            flex: 1;
+                            min-width: 0;">
+                            <div style="
+                                padding: 1rem;">
+                                Gender<span style="color: #f00">*</span>
+                            </div>
+                            <div style="
+                                padding: 1rem;
+                                padding-top: 0rem;">
+                                <select id="selectGender">
+                                    <option value="">
+                                        Select Gender
+                                    </option>
+                                    <option value="male">
+                                        Male
+                                    </option>
+                                    <option value="female">
+                                        Female
+                                    </option>
+                                    <option value="other">
+                                        Other
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="
+                        padding: 1rem;">
+                        Contact Details
+                    </div>
+                    <div style="
+                        display: flex;">
+                        <div style="
+                            padding: 1rem;
+                            padding-top: 0rem;">
+                            <input id="inputEmail"
+                                placeholder="Email"
+                                disabled>
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-top: 0rem;">
+                            <input type="tel"
+                                id="inputPhone"
+                                placeholder="Phone number">
+                        </div>
+                    </div>
+                    <div style="
+                        padding: 1rem;">
+                        Address
+                    </div>
+                    <div style="
+                        display: flex;">
+                        <div style="
+                            flex: 1;
+                            min-width: 0;
+                            padding: 1rem;
+                            padding-top: 0rem;">
+                            <select id="selectProvince"
+                                disabled>
+                                <option value="">
+                                    Province
+                                </option>
+                            </select>
+                        </div>
+                        <div style="
+                            flex: 1;
+                            min-width: 0;
+                            padding: 1rem;
+                            padding-top: 0rem;
+                            padding-left: 0rem;">
+                            <select id="selectCity"
+                                disabled>
+                                <option value="">
+                                    City
+                                </option>
+                            </select>
+                        </div>
+                        <div style="
+                            flex: 1;
+                            min-width: 0;
+                            padding: 1rem;
+                            padding-top: 0rem;
+                            padding-left: 0rem;">
+                            <select id="selectBarangay"
+                                disabled>
+                                <option value="">
+                                    Barangay
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;">
+                        <input id="inputStreet"
+                            placeholder="Street">
+                    </div>
+                    <div style="
+                        display: flex;">
+                        <div style="
+                            flex: 1;
+                            min-width: 0;">
+                        </div>
+                        <div style="
+                            padding: 1rem;">
+                            <button id="btnSave">
+                                Save
+                            </button>
+                            <input type="hidden" id="inputId">
+                        </div>
+                    </div>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0rem;
+                    left: 0rem;
+                    right: 0rem;
+                    bottom: 0rem;
+                    background-color: #fffa;"
+                    id="panelLoader">
+                    <svg width="36px" height="36px" stroke="hsl(228, 97%, 42%)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3" stroke-linecap="round"><animate attributeName="stroke-dasharray" dur="1.5s" calcMode="spline" values="0 150;42 150;42 150;42 150" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" dur="1.5s" calcMode="spline" values="0;-16;-59;-59" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/></circle><animateTransform attributeName="transform" type="rotate" dur="2s" values="0 12 12;360 12 12" repeatCount="indefinite"/></g></svg>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            let btnBack = document.getElementById("btnBack");
+            let inputFirstName = document.getElementById("inputFirstName");
+            let inputLastName = document.getElementById("inputLastName");
+            let inputMiddleInitial = document.getElementById("inputMiddleInitial");
+            let inputBirthdate = document.getElementById("inputBirthdate");
+            let selectGender = document.getElementById("selectGender");
+            let inputEmail = document.getElementById("inputEmail");
+            let inputPhone = document.getElementById("inputPhone");
+            let selectProvince = document.getElementById("selectProvince");
+            let selectCity = document.getElementById("selectCity");
+            let selectBarangay = document.getElementById("selectBarangay");
+            let inputStreet = document.getElementById("inputStreet");
+            let btnSave = document.getElementById("btnSave");
+            let inputId = document.getElementById("inputId");
+            let panelLoader = document.getElementById("panelLoader");
+            initialize();
+
+            async function initialize() {
+                let response = await fetch("https://psgc.cloud/api/v2/regions/1100000000/provinces/");
+                let json = await response.json();
+                console.log(json);
+
+                if (response.ok == false) {
+                    alert("Failed to fetch provinces. Please check your internet connection.");
+                    return;
+                }
+
+                for (let province of json.data) {
+                    let optionElement = elementFromHTML(/*html*/`
+                        <option value="${province.code}">
+                            ${province.name}
+                        </option>
+                    `);
+
+                    selectProvince.appendChild(optionElement);
+                }
+
+                selectProvince.disabled = false;
+
+                let user = await getUser();
+                if (user == null) location.href = "login.html";
+                inputFirstName.value = user.firstname;
+                inputLastName.value = user.lastname;
+                inputMiddleInitial.value = user.middleinitial;
+                inputBirthdate.value = user.birthdate;
+                selectGender.value = user.gender;
+                inputEmail.value = user.email;
+                inputPhone.value = user.phone;
+                inputStreet.value = user.street;
+                selectProvince.value = user.province;
+                await selectProvince.onchange();
+                selectCity.value = user.city;
+                await selectCity.onchange();
+                selectBarangay.value = user.barangay;
+                inputId.value = user.id;
+                panelLoader.style.display = "none";
+            }
+
+            btnBack.onclick = () => location.href = "profile.html";
+
+            selectProvince.onchange = async () => {
+                selectCity.innerHTML = /*html*/`
+                    <option value="">
+                        City
+                    </option>
+                `;
+
+                selectBarangay.innerHTML = /*html*/`
+                    <option value="">
+                        Barangay
+                    </option>
+                `;
+
+                selectCity.disabled = true;
+                selectBarangay.disabled = true;
+                let provinceCode = selectProvince.value;
+                if (provinceCode == "") return;
+                let response = await fetch(`https://psgc.cloud/api/v2/provinces/${provinceCode}/cities-municipalities/`);
+                let json = await response.json();
+                console.log(json);
+
+                if (response.ok == false) {
+                    alert("Failed to fetch cities. Please check your internet connection.");
+                    return;
+                }
+
+                for (let city of json.data) {
+                    let optionElement = elementFromHTML(/*html*/`
+                        <option value="${city.code}">
+                            ${city.name}
+                        </option>
+                    `);
+
+                    selectCity.appendChild(optionElement);
+                }
+
+                selectCity.disabled = false;
+            }
+
+            selectCity.onchange = async () => {
+                selectBarangay.innerHTML = /*html*/`
+                    <option value="">
+                        Barangay
+                    </option>
+                `;
+
+                selectBarangay.disabled = true;
+                let cityCode = selectCity.value;
+                if (cityCode == "") return;
+                let response = await fetch(`https://psgc.cloud/api/v2/cities-municipalities/${cityCode}/barangays/`);
+                let json = await response.json();
+                console.log(json);
+
+                if (response.ok == false) {
+                    alert("Failed to fetch barangays. Please check your internet connection.");
+                    return;
+                }
+
+                for (let barangay of json.data) {
+                    let optionElement = elementFromHTML(/*html*/`
+                        <option value="${barangay.code}">
+                            ${barangay.name}
+                        </option>
+                    `);
+
+                    selectBarangay.appendChild(optionElement);
+                }
+
+                selectBarangay.disabled = false;
+            }
+
+            btnSave.onclick = async () => {
+                let firstname = inputFirstName.value;
+                let lastname = inputLastName.value;
+                let middleinitial = inputMiddleInitial.value;
+                let birthdate = inputBirthdate.value;
+                let gender = selectGender.value;
+                let phone = inputPhone.value;
+                let province = selectProvince.value;
+                let city = selectCity.value;
+                let barangay = selectBarangay.value;
+                let street = inputStreet.value;
+                let id = inputId.value;
+
+                let response = await fetch("api/editProfile/", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id, firstname, lastname, middleinitial, birthdate, gender, phone, province, city, barangay, street
+                    })
+                });
+
+                let json = await response.json();
+                console.log(json);
+
+                if (response.ok == false) {
+                    alert("Failed to register. Please check your internet connection.");
+                    return;
+                }
+
+                location.href = "profile.html";
+            }
+        </script>
+    </body>
+</html>
