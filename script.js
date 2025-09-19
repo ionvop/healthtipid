@@ -30,3 +30,25 @@ function escapeHtml(unsafe) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
+
+async function getUser() {
+    let response = await fetch("api/user/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            session: data.session
+        })
+    });
+
+    let json = await response.json();
+    console.log(json);
+
+    if (response.ok == false) {
+        location.href = "login.html";
+        return;
+    }
+
+    return json.user;
+}
