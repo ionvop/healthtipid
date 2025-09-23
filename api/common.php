@@ -138,3 +138,16 @@ function fetch(string $url, array $options = []): object {
         }
     ];
 }
+
+function getUser($session) {
+    $db = new SQLite3("database.db");
+
+    $query = <<<SQL
+        SELECT * FROM `users` WHERE `session` = :session
+    SQL;
+    
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":session", $session);
+    $user = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+    return $user;
+}
