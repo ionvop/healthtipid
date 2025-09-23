@@ -1,0 +1,1 @@
+CREATE TABLE `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `firstname` TEXT, `lastname` TEXT, `middleinitial` TEXT, `birthdate` TEXT, `gender` TEXT, `email` TEXT UNIQUE, `phone` TEXT, `province` TEXT, `city` TEXT, `barangay` TEXT, `street` TEXT, `session` TEXT, `time` INTEGER DEFAULT (unixepoch()));
