@@ -3,70 +3,29 @@
 require_once "config.php";
 
 /**
- * Sends an HTTP request using cURL and returns the response.
+ * Performs an HTTP request using cURL and returns the response details.
  *
- * This function initiates a cURL session to send an HTTP request to the specified URL using the given method, headers, 
- * and data. It supports custom request methods and bypasses SSL verification. If the request fails, the function returns false.
+ * This function supports GET, POST, PUT, DELETE, and other HTTP methods.
+ * It allows setting custom headers, a request body (JSON or raw), and a timeout.
+ * The response includes status code, success flag, parsed headers, raw body, and JSON-decoded data.
  *
- * @param string $url     The URL to which the request is sent.
- * @param string $method  The HTTP method to use for the request (e.g., 'GET', 'POST', 'PUT', 'DELETE').
- * @param array  $headers An array of HTTP headers to include in the request.
- * @param mixed  $data    The data to send with the request. Typically an associative array or a JSON string.
+ * @param string $url The URL to which the request is sent.
+ * @param array $options Optional request configuration:
+ *   - 'method'  (string): HTTP method to use (default: 'GET').
+ *   - 'headers' (array): Associative array of request headers (e.g., ['Content-Type' => 'application/json']).
+ *   - 'body'    (mixed): Request body, either a string or an array (JSON-encoded if Content-Type is application/json).
+ *   - 'timeout' (int): Request timeout in seconds (default: 30).
  *
- * @return mixed The response from the server as a string, or false if the request fails.
+ * @return array An associative array containing:
+ *   - 'status'  (int): The HTTP status code of the response.
+ *   - 'ok'      (bool): True if the status code is in the 200–299 range, false otherwise.
+ *   - 'headers' (array): Parsed response headers as an associative array.
+ *   - 'body'    (string): Raw response body as a string.
+ *   - 'json'    (mixed): JSON-decoded response body (associative array or null if not JSON or decoding fails).
+ *
+ * @throws RuntimeException If the cURL request fails or the URL is invalid.
  */
-function sendCurl($url, $method, $headers, $data) {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    $result = curl_exec($ch);
-
-    if (curl_errno($ch) != 0) {
-        return false;
-    }
-
-    curl_close($ch);
-    return $result;
-}
-
-/**
- * A JavaScript-like fetch() implementation in PHP using cURL.
- *
- * This function mimics the behavior of the JS `fetch()` API as closely as possible.
- * It supports HTTP methods (GET, POST, PUT, DELETE, etc.), custom headers, JSON
- * request/response handling, and returns an object with status, headers, body, and
- * helper methods for JSON and text parsing.
- *
- * @param string $url     The URL to request.
- * @param array  $options Optional configuration array:
- *                        - method (string): HTTP method (default: 'GET').
- *                        - headers (array): Associative array of headers (e.g., ['Content-Type' => 'application/json']).
- *                        - body (mixed): Request body. Can be a string or array.
- *                                      If array and Content-Type is application/json, it will be JSON-encoded.
- *                        - timeout (int): Request timeout in seconds (default: 30).
- *
- * @return object An object with the following properties:
- *                - status (int): HTTP response status code.
- *                - ok (bool): True if status is in the range 200-299, false otherwise.
- *                - headers (array): Associative array of response headers.
- *                - body (string): Raw response body.
- *                - json() (callable): Returns the response body decoded as JSON (associative array).
- *                - text() (callable): Returns the raw response body as a string.
- *
- * Example usage:
- * $response = fetch('https://jsonplaceholder.typicode.com/posts/1');
- * if ($response->ok) {
- *     print_r($response->json());
- * } else {
- *     echo "Request failed with status: {$response->status}";
- * }
- */
-function fetch(string $url, array $options = []): object {
+function fetch(string $url, array $options = []): array {
     $ch = curl_init();
 
     // Default options
@@ -125,17 +84,12 @@ function fetch(string $url, array $options = []): object {
 
     curl_close($ch);
 
-    return (object)[
+    return [
         'status' => $status,
         'ok' => ($status >= 200 && $status < 300),
         'headers' => $headersArray,
         'body' => $bodyString,
-        'json' => function() use ($bodyString) {
-            return json_decode($bodyString, true);
-        },
-        'text' => function() use ($bodyString) {
-            return $bodyString;
-        }
+        'json' => json_decode($bodyString, true)
     ];
 }
 
