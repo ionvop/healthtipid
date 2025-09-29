@@ -1,8 +1,13 @@
 let g_data = g_loadData();
+g_initialize();
 
-for (let element of document.querySelectorAll("*")) {
-    element.style.setProperty("--none", "none");
-    element.style.removeProperty("--none");
+function g_initialize() {
+    document.body.onload = () => {
+        for (let element of document.body.querySelectorAll("*")) {
+            element.style.setProperty("--test", "test");
+            element.style.removeProperty("--test");
+        }
+    };
 }
 
 function g_loadData() {
@@ -33,22 +38,20 @@ function g_escapeHtml(unsafe) {
 
 async function g_getUser() {
     let response = await fetch("api/user/", {
-        method: "POST",
+        method: "GET",
         headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            session: g_data.session
-        })
+            "Content-Type": "application/json",
+            "Authorization": g_data.session
+        }
     });
 
-    let json = await response.json();
-    console.log(json);
+    let data = await response.json();
+    console.log(data);
 
     if (response.ok == false) {
         location.href = "login.html";
         return;
     }
 
-    return json.user;
+    return data.user;
 }
