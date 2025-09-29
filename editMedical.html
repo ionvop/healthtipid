@@ -456,7 +456,7 @@
             initialize();
 
             async function initialize() {
-                let user = await getUser();
+                let user = await g_getUser();
                 if (user == null) return;
 
                 if (user.height != null) inputHeight.value = user.height;
@@ -538,7 +538,7 @@
                         alcohol_use: selectAlcoholUse.value,
                         physical_activity: selectPhysicalActivity.value,
                         dietary_habits: inputDietaryHabits.value,
-                        session: data.session
+                        session: g_data.session
                     })
                 });
 
