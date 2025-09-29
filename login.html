@@ -191,8 +191,8 @@
 
                 response = await response.json();
                 console.log(response);
-                data.session = response.session;
-                saveData();
+                g_data.session = response.session;
+                g_saveData();
                 location.href = "index.html";
             }
         </script>
