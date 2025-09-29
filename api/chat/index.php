@@ -109,7 +109,7 @@ try {
 
             $data = $response["json"];
 
-            if ($data["choices"][0]["message"]["tool_calls"] != null) {
+            if (array_key_exists("tool_calls", $data["choices"][0]["message"])) {
                 $function = $data["choices"][0]["message"]["tool_calls"][0]["function"]["name"];
                 $args = $data["choices"][0]["message"]["tool_calls"][0]["function"]["arguments"];
                 $args = json_decode($args, true);
