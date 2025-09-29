@@ -60,7 +60,7 @@
             initialize();
 
             async function initialize() {
-                let user = await getUser();
+                let user = await g_getUser();
                 if (user == null) return;
                 imgAvatar.src = user.avatar;
             }
