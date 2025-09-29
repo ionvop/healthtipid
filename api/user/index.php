@@ -4,21 +4,22 @@ chdir("../");
 require_once "common.php";
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 $db = new SQLite3("database.db");
 
 try {
     switch ($_SERVER["REQUEST_METHOD"]) {
-        case "POST":
-            $_POST = json_decode(file_get_contents('php://input'), true);
-
+        case "GET":
+            $headers = getallheaders();
+            $session = $headers["Authorization"];
+            
             $query = <<<SQL
                 SELECT * FROM `users` WHERE `session` = :session
             SQL;
 
             $stmt = $db->prepare($query);
-            $stmt->bindValue(":session", $_POST["session"]);
+            $stmt->bindValue(":session", $session);
             $user = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
 
             if ($user == false) {
