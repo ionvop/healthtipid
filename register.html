@@ -250,7 +250,7 @@
                 }
 
                 for (let province of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${province.code}">
                             ${province.name}
                         </option>
@@ -291,7 +291,7 @@
                 }
 
                 for (let city of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${city.code}">
                             ${city.name}
                         </option>
@@ -323,7 +323,7 @@
                 }
 
                 for (let barangay of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${barangay.code}">
                             ${barangay.name}
                         </option>
@@ -366,8 +366,8 @@
                     return;
                 }
 
-                data.session = json.session;
-                saveData();
+                g_data.session = json.session;
+                g_saveData();
                 location.href = "home.html";
             }
         </script>
