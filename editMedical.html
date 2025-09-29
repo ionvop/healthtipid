@@ -522,7 +522,8 @@
                 let response = await fetch("api/user/medical/", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
                     },
                     body: JSON.stringify({
                         height: Number(inputHeight.value),
@@ -537,8 +538,7 @@
                         smoking_status: selectSmokingStatus.value,
                         alcohol_use: selectAlcoholUse.value,
                         physical_activity: selectPhysicalActivity.value,
-                        dietary_habits: inputDietaryHabits.value,
-                        session: g_data.session
+                        dietary_habits: inputDietaryHabits.value
                     })
                 });
 
