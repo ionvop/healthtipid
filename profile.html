@@ -106,7 +106,7 @@
             initialize();
 
             async function initialize() {
-                let user = await getUser();
+                let user = await g_getUser();
                 if (user == null) return;
                 panelUsername.textContent = user.firstname + " " + user.lastname;
             }
