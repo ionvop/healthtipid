@@ -271,7 +271,7 @@
                 }
 
                 for (let province of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${province.code}">
                             ${province.name}
                         </option>
@@ -282,7 +282,7 @@
 
                 selectProvince.disabled = false;
 
-                let user = await getUser();
+                let user = await g_getUser();
                 if (user == null) location.href = "login.html";
                 inputFirstName.value = user.firstname;
                 inputLastName.value = user.lastname;
@@ -330,7 +330,7 @@
                 }
 
                 for (let city of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${city.code}">
                             ${city.name}
                         </option>
@@ -362,7 +362,7 @@
                 }
 
                 for (let barangay of json.data) {
-                    let optionElement = elementFromHTML(/*html*/`
+                    let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${barangay.code}">
                             ${barangay.name}
                         </option>
