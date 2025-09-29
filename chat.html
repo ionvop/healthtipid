@@ -21,7 +21,6 @@
                 flex: 1;
                 min-height: 0;"
                 id="panelChat">
-                
             </div>
             <div style="
                 display: flex;
@@ -64,6 +63,13 @@
             const btnBack = document.getElementById("btnBack");
             const inputMessage = document.getElementById("inputMessage");
             const panelChat = document.getElementById("panelChat");
+            const chat = [
+                {
+                    role: "assistant",
+                    content: "Hello! How can I help you today?"
+                }
+            ]
+            
             btnBack.onclick = () => location.href = "home.html";
         </script>
     </body>
