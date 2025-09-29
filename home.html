@@ -177,7 +177,7 @@
             initialize();
 
             async function initialize() {
-                let user = await getUser();
+                let user = await g_getUser();
                 panelWelcome.textContent = "Hello, " + user.firstname + "!";
             }
 
@@ -205,8 +205,8 @@
 
             tabLogout.onclick = () => {
                 if (confirm("Are you sure you want to logout?") == false) return;
-                data.session = "";
-                saveData();
+                g_data.session = "";
+                g_saveData();
                 location.href = "index.html";
             }
 
