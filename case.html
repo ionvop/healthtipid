@@ -183,10 +183,7 @@
                 panelAdvice.textContent = data.case.self_care_advice;
             }
 
-            btnBack.onclick = () => {
-                if (confirm("Are you sure you want to go back? You haven't saved this case yet") == false) return;
-                location.href = "chat.html";
-            }
+            btnBack.onclick = () => location.href = "home.html";
 
             btnFind.onclick = async () => {
                 
