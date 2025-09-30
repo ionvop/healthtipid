@@ -1,124 +1,131 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            button {
-                width: 100%;
-                background-color: #00f;
-                color: #fff;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            overflow: hidden;">
-            <div style="
-                display: flex;
-                background-color: #00f;">
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    padding: 1rem;"
-                    id="btnBack">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
-                </div>
-                <div style="
-                    display: flex;
-                    align-items: center;
-                    flex: 1;
-                    min-width: 0;
-                    padding: 1rem;
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    color: #fff;">
-                    HealthTipid
-                </div>
-            </div>
-            <div style="
-                padding: 1rem;
-                font-size: 1.5rem;
-                font-weight: bold;
-                text-align: center;">
-                Change Avatar
-            </div>
-            <div style="
-                padding: 1rem;
-                text-align: center;">
-                <img style="
-                    width: 10rem;
-                    height: 10rem;
-                    border-radius: 50%;
-                    object-fit: cover;"
-                    src="api/uploads/avatar/image.png"
-                    id="imgAvatar">
-            </div>
-            <div style="
-                padding: 1rem;
-                text-align: center;">
-                <input type="file"
-                    accept="image/*"
-                    id="fileAvatar">
-            </div>
-            <div style="
-                flex: 1;
-                min-height: 0;">
-            </div>
-            <div style="
-                padding: 1rem;">
-                <button id="btnSave">
-                    Save
-                </button>
-            </div>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      button {
+        width: 100%;
+        background-color: #00f;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+      "
+    >
+      <div style="display: flex; background-color: #00f">
+        <div
+          style="display: flex; align-items: center; padding: 1rem"
+          id="btnBack"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"
+            />
+          </svg>
         </div>
-        <script src="script.js"></script>
-        <script>
-            const btnBack = document.getElementById("btnBack");
-            const imgAvatar = document.getElementById("imgAvatar");
-            const fileAvatar = document.getElementById("fileAvatar");
-            const btnSave = document.getElementById("btnSave");
-            initialize();
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+          "
+        >
+          HealthTipid
+        </div>
+      </div>
+      <div
+        style="
+          padding: 1rem;
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-align: center;
+        "
+      >
+        Change Avatar
+      </div>
+      <div style="padding: 1rem; text-align: center">
+        <img
+          style="
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            object-fit: cover;
+          "
+          src="api/uploads/avatar/image.png"
+          id="imgAvatar"
+        />
+      </div>
+      <div style="padding: 1rem; text-align: center">
+        <input type="file" accept="image/*" id="fileAvatar" />
+      </div>
+      <div style="flex: 1; min-height: 0"></div>
+      <div style="padding: 1rem">
+        <button id="btnSave">Save</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      const btnBack = document.getElementById("btnBack");
+      const imgAvatar = document.getElementById("imgAvatar");
+      const fileAvatar = document.getElementById("fileAvatar");
+      const btnSave = document.getElementById("btnSave");
+      initialize();
 
-            async function initialize() {
-                const user = await g_getUser();
-                imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
-            }
+      async function initialize() {
+        const user = await g_getUser();
+        imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
+      }
 
-            btnBack.onclick = () => location.href = "profile.html";
+      btnBack.onclick = () => (location.href = "profile.html");
 
-            fileAvatar.onchange = () => {
-                const file = fileAvatar.files[0];
-                const reader = new FileReader();
-                reader.onload = () => imgAvatar.src = reader.result;
-                reader.readAsDataURL(file);
-            }
+      fileAvatar.onchange = () => {
+        const file = fileAvatar.files[0];
+        const reader = new FileReader();
+        reader.onload = () => (imgAvatar.src = reader.result);
+        reader.readAsDataURL(file);
+      };
 
-            btnSave.onclick = async () => {
-                btnSave.disabled = true;
+      btnSave.onclick = async () => {
+        btnSave.disabled = true;
 
-                btnSave.innerHTML = /*html*/`
+        btnSave.innerHTML = /*html*/ `
                     <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
                 `;
 
-                const file = fileAvatar.files[0];
-                const formData = new FormData();
-                formData.append("avatar", file);
+        const file = fileAvatar.files[0];
+        const formData = new FormData();
+        formData.append("avatar", file);
 
-                const response = await fetch("api/user/avatar/", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": g_data.session
-                    },
-                    body: formData
-                });
+        const response = await fetch("api/user/avatar/", {
+          method: "POST",
+          headers: {
+            Authorization: g_data.session,
+          },
+          body: formData,
+        });
 
-                const data = await response.json();
-                console.log(data);
-                location.href = "profile.html";
-            }
-        </script>
-    </body>
+        const data = await response.json();
+        console.log(data);
+        location.href = "profile.html";
+      };
+    </script>
+  </body>
 </html>
