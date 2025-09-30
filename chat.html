@@ -121,7 +121,7 @@
                                             padding-top: 0rem;">
                                             <button style="
                                                 width: 100%;"
-                                                onclick="finishConsultation()"
+                                                onclick="finishConsultation(this)"
                                                 data-value="${g_escapeHtml(JSON.stringify(message.args))}">
                                                 Finish Consultation
                                             </button>
@@ -186,6 +186,10 @@
                 }
 
                 panelChat.scrollTop = panelChat.scrollHeight;
+            }
+
+            function finishConsultation(element) {
+                location.href = "result.html?data=" + encodeURIComponent(element.dataset.value);
             }
             
             btnBack.onclick = () => location.href = "home.html";
