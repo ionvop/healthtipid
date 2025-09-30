@@ -19,7 +19,7 @@
                     display: flex;
                     align-items: center;
                     padding: 1rem;"
-                    id="btnMenu">
+                    id="btnBack">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
                 </div>
                 <div style="
@@ -47,7 +47,8 @@
                         height: 10rem;
                         border-radius: 50%;
                         object-fit: cover;"
-                        src="assets/image.png">
+                        src="api/uploads/avatar/image.png"
+                        id="imgAvatar">
                 </div>
                 <div style="
                     padding: 1rem;
@@ -99,19 +100,21 @@
         </div>
         <script src="script.js"></script>
         <script>
-            let btnMenu = document.getElementById("btnMenu");
-            let panelUsername = document.getElementById("panelUsername");
-            let btnEditProfile = document.getElementById("btnEditProfile");
-            let btnEditMedical = document.getElementById("btnEditMedical");
+            const btnBack = document.getElementById("btnBack");
+            const imgAvatar = document.getElementById("imgAvatar");
+            const panelUsername = document.getElementById("panelUsername");
+            const btnEditProfile = document.getElementById("btnEditProfile");
+            const btnEditMedical = document.getElementById("btnEditMedical");
             initialize();
 
             async function initialize() {
-                let user = await g_getUser();
-                if (user == null) return;
+                const user = await g_getUser();
+                imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
                 panelUsername.textContent = user.firstname + " " + user.lastname;
             }
 
-            btnMenu.onclick = () => location.href = "home.html";
+            btnBack.onclick = () => location.href = "home.html";
+            imgAvatar.onclick = () => location.href = "editAvatar.html";
             btnEditProfile.onclick = () => location.href = "editProfile.html";
             btnEditMedical.onclick = () => location.href = "editMedical.html";
         </script>
