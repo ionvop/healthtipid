@@ -25,7 +25,13 @@ try {
                 exit;
             }
 
+            $prompt = file_get_contents("assets/prompt.md");
+
             $messages = [
+                [
+                    "role" => "system",
+                    "content" => $prompt
+                ],
                 [
                     "role" => "system",
                     "content" => "User information:\n\n" . json_encode($user, JSON_PRETTY_PRINT)
@@ -55,27 +61,32 @@ try {
                             "properties" => [
                                 "details" => [
                                     "type" => "array",
-                                    "description" => "A list of key-value pairs containing the details of the report case.",
+                                    "description" => "A list of key-value pairs containing the details of the consultation, summary of the symptoms, contextual info,  No need to include the user information as it will be automatically added.",
                                     "items" => [
                                         "type" => "object",
-                                        "description" => "A key-value pair containing the details of the report case.",
+                                        "description" => "A key-value pair containing the details of the consultation.",
                                         "properties" => [
-                                            "name" => [
+                                            "field" => [
                                                 "type" => "string",
-                                                "description" => "The name of the detail."
+                                                "description" => "The field of the detail."
                                             ],
-                                            "value" => [
+                                            "content" => [
                                                 "type" => "string",
-                                                "description" => "The value of the detail."
+                                                "description" => "The content of the detail."
                                             ]
                                         ],
-                                        "required" => ["name", "value"],
+                                        "required" => ["field", "content"],
                                         "additionalProperties" => false
                                     ]
                                 ],
-                                "diagnosis" => [
+                                "urgency" => [
                                     "type" => "string",
-                                    "description" => "The diagnosis of the report case for the doctors to review."
+                                    "description" => "The urgency of the consultation.",
+                                    "enum" => ["low", "medium", "high"]
+                                ],
+                                "preliminary_impression" => [
+                                    "type" => "string",
+                                    "description" => "A preliminary impression of the patient's condition and probable conditions based on the symptoms and details provided."
                                 ],
                                 "self_care_advice" => [
                                     "type" => "string",
@@ -86,7 +97,7 @@ try {
                                     "description" => "The message to send to the patient before showing the diagnosis and self-care advice, telling that the report case is ready to be submitted."
                                 ]
                             ],
-                            "required" => ["details", "diagnosis", "self_care_advice", "message"],
+                            "required" => ["details", "urgency", "preliminary_impression", "self_care_advice", "message"],
                             "additionalProperties" => false
                         ],
                         "strict" => true
@@ -107,6 +118,7 @@ try {
                 ])
             ]);
 
+            file_put_contents("logs/" . date("Y-m-d_H-i-s") . ".json", json_encode($response, JSON_PRETTY_PRINT));
             $data = $response["json"];
 
             if (array_key_exists("tool_calls", $data["choices"][0]["message"])) {
