@@ -1,28 +1,33 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
 
-        </style>
-    </head>
-    <body>
-        <div style="
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div style="
             display: flex;
             flex-direction: column;
             height: 100%;
             overflow: hidden;">
-            <div style="
+        <div style="
                 display: flex;
-                background-color: #00f;">
-                <div style="
+                background-color: #056CF2;">
+            <div style="
                     display: flex;
                     align-items: center;
-                    padding: 1rem;"
-                    id="btnBack">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
-                </div>
-                <div style="
+                    padding: 1rem;" id="btnBack">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#e3e3e3">
+                    <path
+                        d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z" />
+                </svg>
+            </div>
+            <div style="
                     display: flex;
                     align-items: center;
                     flex: 1;
@@ -32,42 +37,41 @@
                     font-size: 1.5rem;
                     font-weight: bold;
                     color: #fff;">
-                    Account Details
-                </div>
+                Account Details
             </div>
-            <div style="
-                flex: 1;
+        </div>
+        <div style="
                 min-height: auto;
-                overflow: auto;">
-                <div style="
+                overflow: auto;" class="card">
+            <div style="
                     padding: 1rem;
                     text-align: center;">
-                    <img style="
+                <img style="
                         width: 10rem;
                         height: 10rem;
                         border-radius: 50%;
-                        object-fit: cover;"
-                        src="api/uploads/avatar/image.png"
-                        id="imgAvatar">
-                </div>
-                <div style="
+                        object-fit: cover;" src="api/uploads/avatar/image.png" id="imgAvatar">
+            </div>
+            <div style="
                     padding: 1rem;
                     padding-top: 0rem;
                     font-size: 1.5rem;
                     font-weight: bold;
                     text-align: center;
-                    border-bottom: 1px solid #555;"
-                    id="panelUsername">
-                    User
+                    border-bottom: 1px solid #555;" id="panelUsername">
+                User
+            </div>
+            <div style="
+                    display: flex;" id="btnEditProfile">
+                <div style="
+                        padding: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1f1f1f">
+                        <path
+                            d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Z" />
+                    </svg>
                 </div>
                 <div style="
-                    display: flex;"
-                    id="btnEditProfile">
-                    <div style="
-                        padding: 1rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Z"/></svg>
-                    </div>
-                    <div style="
                         display: flex;
                         align-items: center;
                         flex: 1;
@@ -75,17 +79,20 @@
                         padding: 1rem;
                         padding-left: 0rem;
                         border-bottom: 1px solid #555;">
-                        Edit Account Details
-                    </div>
+                    Edit Account Details
+                </div>
+            </div>
+            <div style="
+                    display: flex;" id="btnEditMedical">
+                <div style="
+                        padding: 1rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#1f1f1f">
+                        <path
+                            d="M360-480h240q17 0 28.5-11.5T640-520q0-17-11.5-28.5T600-560H360q-17 0-28.5 11.5T320-520q0 17 11.5 28.5T360-480Zm0-160h240q17 0 28.5-11.5T640-680q0-17-11.5-28.5T600-720H360q-17 0-28.5 11.5T320-680q0 17 11.5 28.5T360-640Zm438 499L636-352q-17-23-42-35.5T540-400H160v-400q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 5-.5 9.5T798-141ZM240-80q-33 0-56.5-23.5T160-160v-160h380q10 0 18.5 4.5T573-303L741-83q-5 2-10.5 2.5T720-80H240Z" />
+                    </svg>
                 </div>
                 <div style="
-                    display: flex;"
-                    id="btnEditMedical">
-                    <div style="
-                        padding: 1rem;">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M360-480h240q17 0 28.5-11.5T640-520q0-17-11.5-28.5T600-560H360q-17 0-28.5 11.5T320-520q0 17 11.5 28.5T360-480Zm0-160h240q17 0 28.5-11.5T640-680q0-17-11.5-28.5T600-720H360q-17 0-28.5 11.5T320-680q0 17 11.5 28.5T360-640Zm438 499L636-352q-17-23-42-35.5T540-400H160v-400q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 5-.5 9.5T798-141ZM240-80q-33 0-56.5-23.5T160-160v-160h380q10 0 18.5 4.5T573-303L741-83q-5 2-10.5 2.5T720-80H240Z"/></svg>
-                    </div>
-                    <div style="
                         display: flex;
                         align-items: center;
                         flex: 1;
@@ -93,30 +100,33 @@
                         padding: 1rem;
                         padding-left: 0rem;
                         border-bottom: 1px solid #555;">
-                        Edit Medical Information
-                    </div>
+                    Edit Medical Information
                 </div>
             </div>
         </div>
-        <script src="script.js"></script>
-        <script>
-            const btnBack = document.getElementById("btnBack");
-            const imgAvatar = document.getElementById("imgAvatar");
-            const panelUsername = document.getElementById("panelUsername");
-            const btnEditProfile = document.getElementById("btnEditProfile");
-            const btnEditMedical = document.getElementById("btnEditMedical");
-            initialize();
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const btnBack = document.getElementById("btnBack");
+        const imgAvatar = document.getElementById("imgAvatar");
+        const panelUsername = document.getElementById("panelUsername");
+        const btnEditProfile = document.getElementById("btnEditProfile");
+        const btnEditMedical = document.getElementById("btnEditMedical");
+        initialize();
 
-            async function initialize() {
-                const user = await g_getUser();
-                imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
-                panelUsername.textContent = user.firstname + " " + user.lastname;
-            }
+        async function initialize() {
+            const user = await g_getUser();
+            imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
+            panelUsername.textContent = user.firstname + " " + user.lastname;
+        }
 
-            btnBack.onclick = () => location.href = "home.html";
-            imgAvatar.onclick = () => location.href = "editAvatar.html";
-            btnEditProfile.onclick = () => location.href = "editProfile.html";
-            btnEditMedical.onclick = () => location.href = "editMedical.html";
-        </script>
-    </body>
+        btnBack.onclick = () => location.href = "home.html";
+        imgAvatar.onclick = () => location.href = "editAvatar.html";
+        btnEditProfile.onclick = () => location.href = "editProfile.html";
+        btnEditMedical.onclick = () => location.href = "editMedical.html";
+    </script>
+</body>
+
+</html>
+
 </html>
