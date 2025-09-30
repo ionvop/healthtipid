@@ -3,7 +3,11 @@
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-
+            button {
+                width: 100%;
+                background-color: #00f;
+                color: #fff;
+            }
         </style>
     </head>
     <body>
@@ -49,23 +53,72 @@
                     height: 10rem;
                     border-radius: 50%;
                     object-fit: cover;"
-                    src="assets/image.png"
+                    src="api/uploads/avatar/image.png"
                     id="imgAvatar">
+            </div>
+            <div style="
+                padding: 1rem;
+                text-align: center;">
+                <input type="file"
+                    accept="image/*"
+                    id="fileAvatar">
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;">
+            </div>
+            <div style="
+                padding: 1rem;">
+                <button id="btnSave">
+                    Save
+                </button>
             </div>
         </div>
         <script src="script.js"></script>
         <script>
-            let btnBack = document.getElementById("btnBack");
-            let imgAvatar = document.getElementById("imgAvatar");
+            const btnBack = document.getElementById("btnBack");
+            const imgAvatar = document.getElementById("imgAvatar");
+            const fileAvatar = document.getElementById("fileAvatar");
+            const btnSave = document.getElementById("btnSave");
             initialize();
 
             async function initialize() {
-                let user = await g_getUser();
-                if (user == null) return;
-                imgAvatar.src = user.avatar;
+                const user = await g_getUser();
+                imgAvatar.src = `api/uploads/avatar/${user.avatar}`;
             }
 
             btnBack.onclick = () => location.href = "profile.html";
+
+            fileAvatar.onchange = () => {
+                const file = fileAvatar.files[0];
+                const reader = new FileReader();
+                reader.onload = () => imgAvatar.src = reader.result;
+                reader.readAsDataURL(file);
+            }
+
+            btnSave.onclick = async () => {
+                btnSave.disabled = true;
+
+                btnSave.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                const file = fileAvatar.files[0];
+                const formData = new FormData();
+                formData.append("avatar", file);
+
+                const response = await fetch("api/editAvatar/", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": g_data.session
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+                console.log(data);
+                location.href = "profile.html";
+            }
         </script>
     </body>
 </html>
