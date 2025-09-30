@@ -107,7 +107,7 @@
                 const formData = new FormData();
                 formData.append("avatar", file);
 
-                const response = await fetch("api/editAvatar/", {
+                const response = await fetch("api/user/avatar/", {
                     method: "POST",
                     headers: {
                         "Authorization": g_data.session
