@@ -89,8 +89,13 @@ try {
             ]);
 
             exit;
-        case "OPTIONS":
-            http_response_code(204);
+        default:
+            http_response_code(405);
+
+            echo json_encode([
+                "error" => "Method not allowed"
+            ]);
+
             exit;
     }
 } catch (Exception $e) {
