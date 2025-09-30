@@ -3,10 +3,10 @@
 chdir("../../");
 require_once "common.php";
 header("Content-Type: application/json");
-$_POST = json_decode(file_get_contents('php://input'), true);
+$db = new SQLite3("database.db");
 
 try {
-    $db = new SQLite3("database.db");
+    $_POST = json_decode(file_get_contents('php://input'), true);
     session_start();
 
     if ($_POST["code"] != $_SESSION["code"]) {
