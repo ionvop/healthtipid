@@ -1,41 +1,32 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            input {
-                background-color: transparent;
-                border-bottom: 1px solid #00f;
-                padding: 0.5rem;
-                font-size: 0.7rem;
-            }
 
-            select {
-                background-color: transparent;
-                border-radius: 0rem;
-                border-bottom: 1px solid #00f;
-                padding: 0.5rem;
-                font-size: 0.7rem;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div style="
             display: flex;
             flex-direction: column;
             height: 100%;
             overflow: hidden;">
-            <div style="
+        <div style="
                 display: flex;
-                background-color: #00f;">
-                <div style="
+                background-color: #056CF2;">
+            <div style="
                     display: flex;
                     align-items: center;
-                    padding: 1rem;"
-                    id="btnBack">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
-                </div>
-                <div style="
+                    padding: 1rem;" id="btnBack">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#e3e3e3">
+                    <path
+                        d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z" />
+                </svg>
+            </div>
+            <div style="
                     display: flex;
                     align-items: center;
                     flex: 1;
@@ -44,332 +35,319 @@
                     font-size: 1.5rem;
                     font-weight: bold;
                     color: #fff;">
-                    HealthTipid
-                </div>
+                HealthTipid
             </div>
-            <div style="
-                flex: 1;
+        </div>
+        <div style="
                 min-width: 0;
-                overflow: auto;">
-                <div style="
+                overflow: auto;" class="card">
+            <div style="
                     padding: 1rem;
                     text-align: center;
                     font-size: 1.5rem;
                     font-weight: bold;">
-                    Account Registration Form
-                </div>
-                <div style="
+                Account Registration Form
+            </div>
+            <div style="
                     padding: 1rem;">
-                    Full Name<span style="color: #f00">*</span>
-                </div>
-                <div style="
+                Full Name<span style="color: #f00">*</span>
+            </div>
+            <div style="
                     display: flex;">
-                    <div style="
+                <div style="
                         flex: 1;
                         min-width: 0;
                         padding: 1rem;
                         padding-top: 0rem;">
-                        <input id="inputFirstName"
-                            placeholder="First name">
-                    </div>
-                    <div style="
+                    <input id="inputFirstName" placeholder="First name">
+                </div>
+                <div style="
                         flex: 1;
                         min-width: 0;
                         padding: 1rem;
                         padding-left: 0rem;
                         padding-top: 0rem;">
-                        <input id="inputLastName"
-                            placeholder="Last name">
-                    </div>
-                    <div style="
+                    <input id="inputLastName" placeholder="Last name">
+                </div>
+                <div style="
                         padding: 1rem;
                         padding-left: 0rem;
                         padding-top: 0rem;">
-                        <input style="
-                            width: 3rem;"
-                            id="inputMiddleInitial"
-                            placeholder="MI">
-                    </div>
+                    <input style="
+                            width: 3rem;" id="inputMiddleInitial" placeholder="MI">
                 </div>
-                <div style="
+            </div>
+            <div style="
                     display: flex;">
-                    <div style="
+                <div style="
                         flex: 1;
                         min-width: 0;">
-                        <div style="
+                    <div style="
                             padding: 1rem;">
-                            Date of Birth<span style="color: #f00">*</span>
-                        </div>
-                        <div style="
+                        Date of Birth<span style="color: #f00">*</span>
+                    </div>
+                    <div style="
                             padding: 1rem;
                             padding-top: 0rem;">
-                            <input type="date"
-                                id="inputBirthdate">
-                        </div>
+                        <input type="date" id="inputBirthdate">
                     </div>
-                    <div style="
+                </div>
+                <div style="
                         flex: 1;
                         min-width: 0;">
-                        <div style="
+                    <div style="
                             padding: 1rem;">
-                            Gender<span style="color: #f00">*</span>
-                        </div>
-                        <div style="
+                        Gender<span style="color: #f00">*</span>
+                    </div>
+                    <div style="
                             padding: 1rem;
                             padding-top: 0rem;">
-                            <select id="selectGender">
-                                <option value="">
-                                    Select Gender
-                                </option>
-                                <option value="male">
-                                    Male
-                                </option>
-                                <option value="female">
-                                    Female
-                                </option>
-                                <option value="other">
-                                    Other
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div style="
-                    padding: 1rem;">
-                    Contact Details
-                </div>
-                <div style="
-                    display: flex;">
-                    <div style="
-                        padding: 1rem;
-                        padding-top: 0rem;">
-                        <input id="inputEmail"
-                            placeholder="Email"
-                            disabled>
-                    </div>
-                    <div style="
-                        padding: 1rem;
-                        padding-top: 0rem;">
-                        <input type="tel"
-                            id="inputPhone"
-                            placeholder="Phone number">
-                    </div>
-                </div>
-                <div style="
-                    padding: 1rem;">
-                    Address
-                </div>
-                <div style="
-                    display: flex;">
-                    <div style="
-                        flex: 1;
-                        min-width: 0;
-                        padding: 1rem;
-                        padding-top: 0rem;">
-                        <select id="selectProvince"
-                            disabled>
+                        <select id="selectGender">
                             <option value="">
-                                Province
+                                Select Gender
+                            </option>
+                            <option value="male">
+                                Male
+                            </option>
+                            <option value="female">
+                                Female
+                            </option>
+                            <option value="other">
+                                Other
                             </option>
                         </select>
-                    </div>
-                    <div style="
-                        flex: 1;
-                        min-width: 0;
-                        padding: 1rem;
-                        padding-top: 0rem;
-                        padding-left: 0rem;">
-                        <select id="selectCity"
-                            disabled>
-                            <option value="">
-                                City
-                            </option>
-                        </select>
-                    </div>
-                    <div style="
-                        flex: 1;
-                        min-width: 0;
-                        padding: 1rem;
-                        padding-top: 0rem;
-                        padding-left: 0rem;">
-                        <select id="selectBarangay"
-                            disabled>
-                            <option value="">
-                                Barangay
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div style="
-                    padding: 1rem;
-                    padding-top: 0rem;">
-                    <input id="inputStreet"
-                        placeholder="Street">
-                </div>
-                <div style="
-                    display: flex;">
-                    <div style="
-                        flex: 1;
-                        min-width: 0;">
-                    </div>
-                    <div style="
-                        padding: 1rem;">
-                        <button id="btnRegister">
-                            Register
-                        </button>
                     </div>
                 </div>
             </div>
+            <div style="
+                    padding: 1rem;">
+                Contact Details
+            </div>
+            <div style="
+                    display: flex;">
+                <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;">
+                    <input id="inputEmail" placeholder="Email" disabled>
+                </div>
+                <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;">
+                    <input type="tel" id="inputPhone" placeholder="Phone number">
+                </div>
+            </div>
+            <div style="
+                    padding: 1rem;">
+                Address
+            </div>
+            <div style="
+                    display: flex;">
+                <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;">
+                    <select id="selectProvince" disabled>
+                        <option value="">
+                            Province
+                        </option>
+                    </select>
+                </div>
+                <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;">
+                    <select id="selectCity" disabled>
+                        <option value="">
+                            City
+                        </option>
+                    </select>
+                </div>
+                <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;">
+                    <select id="selectBarangay" disabled>
+                        <option value="">
+                            Barangay
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                <input id="inputStreet" placeholder="Street">
+            </div>
+            <div style="
+                    display: flex;">
+                <div style="
+                        flex: 1;
+                        min-width: 0;">
+                </div>
+                <div style="
+                        padding: 1rem;">
+                    <button id="btnRegister">
+                        Register
+                    </button>
+                </div>
+            </div>
         </div>
-        <script src="script.js"></script>
-        <script>
-            let btnBack = document.getElementById("btnBack");
-            let inputFirstName = document.getElementById("inputFirstName");
-            let inputLastName = document.getElementById("inputLastName");
-            let inputMiddleInitial = document.getElementById("inputMiddleInitial");
-            let inputBirthdate = document.getElementById("inputBirthdate");
-            let selectGender = document.getElementById("selectGender");
-            let inputEmail = document.getElementById("inputEmail");
-            let inputPhone = document.getElementById("inputPhone");
-            let selectProvince = document.getElementById("selectProvince");
-            let selectCity = document.getElementById("selectCity");
-            let selectBarangay = document.getElementById("selectBarangay");
-            let inputStreet = document.getElementById("inputStreet");
-            let btnRegister = document.getElementById("btnRegister");
-            initialize();
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let btnBack = document.getElementById("btnBack");
+        let inputFirstName = document.getElementById("inputFirstName");
+        let inputLastName = document.getElementById("inputLastName");
+        let inputMiddleInitial = document.getElementById("inputMiddleInitial");
+        let inputBirthdate = document.getElementById("inputBirthdate");
+        let selectGender = document.getElementById("selectGender");
+        let inputEmail = document.getElementById("inputEmail");
+        let inputPhone = document.getElementById("inputPhone");
+        let selectProvince = document.getElementById("selectProvince");
+        let selectCity = document.getElementById("selectCity");
+        let selectBarangay = document.getElementById("selectBarangay");
+        let inputStreet = document.getElementById("inputStreet");
+        let btnRegister = document.getElementById("btnRegister");
+        initialize();
 
-            async function initialize() {
-                inputEmail.value = new URLSearchParams(location.search).get("email");
-                let response = await fetch("https://psgc.cloud/api/v2/regions/1100000000/provinces/");
-                let json = await response.json();
-                console.log(json);
+        async function initialize() {
+            inputEmail.value = new URLSearchParams(location.search).get("email");
+            let response = await fetch("https://psgc.cloud/api/v2/regions/1100000000/provinces/");
+            let json = await response.json();
+            console.log(json);
 
-                if (response.ok == false) {
-                    alert("Failed to fetch provinces. Please check your internet connection.");
-                    return;
-                }
+            if (response.ok == false) {
+                alert("Failed to fetch provinces. Please check your internet connection.");
+                return;
+            }
 
-                for (let province of json.data) {
-                    let optionElement = g_elementFromHTML(/*html*/`
+            for (let province of json.data) {
+                let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${province.code}">
                             ${province.name}
                         </option>
                     `);
 
-                    selectProvince.appendChild(optionElement);
-                }
-
-                selectProvince.disabled = false;
+                selectProvince.appendChild(optionElement);
             }
 
-            btnBack.onclick = () => location.href = "login.html";
+            selectProvince.disabled = false;
+        }
 
-            selectProvince.onchange = async () => {
-                selectCity.innerHTML = /*html*/`
+        btnBack.onclick = () => location.href = "login.html";
+
+        selectProvince.onchange = async () => {
+            selectCity.innerHTML = /*html*/`
                     <option value="">
                         City
                     </option>
                 `;
 
-                selectBarangay.innerHTML = /*html*/`
+            selectBarangay.innerHTML = /*html*/`
                     <option value="">
                         Barangay
                     </option>
                 `;
 
-                selectCity.disabled = true;
-                selectBarangay.disabled = true;
-                let provinceCode = selectProvince.value;
-                if (provinceCode == "") return;
-                let response = await fetch(`https://psgc.cloud/api/v2/provinces/${provinceCode}/cities-municipalities/`);
-                let json = await response.json();
-                console.log(json);
+            selectCity.disabled = true;
+            selectBarangay.disabled = true;
+            let provinceCode = selectProvince.value;
+            if (provinceCode == "") return;
+            let response = await fetch(`https://psgc.cloud/api/v2/provinces/${provinceCode}/cities-municipalities/`);
+            let json = await response.json();
+            console.log(json);
 
-                if (response.ok == false) {
-                    alert("Failed to fetch cities. Please check your internet connection.");
-                    return;
-                }
+            if (response.ok == false) {
+                alert("Failed to fetch cities. Please check your internet connection.");
+                return;
+            }
 
-                for (let city of json.data) {
-                    let optionElement = g_elementFromHTML(/*html*/`
+            for (let city of json.data) {
+                let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${city.code}">
                             ${city.name}
                         </option>
                     `);
 
-                    selectCity.appendChild(optionElement);
-                }
-
-                selectCity.disabled = false;
+                selectCity.appendChild(optionElement);
             }
 
-            selectCity.onchange = async () => {
-                selectBarangay.innerHTML = /*html*/`
+            selectCity.disabled = false;
+        }
+
+        selectCity.onchange = async () => {
+            selectBarangay.innerHTML = /*html*/`
                     <option value="">
                         Barangay
                     </option>
                 `;
 
-                selectBarangay.disabled = true;
-                let cityCode = selectCity.value;
-                if (cityCode == "") return;
-                let response = await fetch(`https://psgc.cloud/api/v2/cities-municipalities/${cityCode}/barangays/`);
-                let json = await response.json();
-                console.log(json);
+            selectBarangay.disabled = true;
+            let cityCode = selectCity.value;
+            if (cityCode == "") return;
+            let response = await fetch(`https://psgc.cloud/api/v2/cities-municipalities/${cityCode}/barangays/`);
+            let json = await response.json();
+            console.log(json);
 
-                if (response.ok == false) {
-                    alert("Failed to fetch barangays. Please check your internet connection.");
-                    return;
-                }
+            if (response.ok == false) {
+                alert("Failed to fetch barangays. Please check your internet connection.");
+                return;
+            }
 
-                for (let barangay of json.data) {
-                    let optionElement = g_elementFromHTML(/*html*/`
+            for (let barangay of json.data) {
+                let optionElement = g_elementFromHTML(/*html*/`
                         <option value="${barangay.code}">
                             ${barangay.name}
                         </option>
                     `);
 
-                    selectBarangay.appendChild(optionElement);
-                }
-
-                selectBarangay.disabled = false;
+                selectBarangay.appendChild(optionElement);
             }
 
-            btnRegister.onclick = async () => {
-                let firstname = inputFirstName.value;
-                let lastname = inputLastName.value;
-                let middleinitial = inputMiddleInitial.value;
-                let birthdate = inputBirthdate.value;
-                let gender = selectGender.value;
-                let phone = inputPhone.value;
-                let province = selectProvince.value;
-                let city = selectCity.value;
-                let barangay = selectBarangay.value;
-                let street = inputStreet.value;
+            selectBarangay.disabled = false;
+        }
 
-                let response = await fetch("api/register/", {
-                    method: "POST",
-                    credentials: "same-origin",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        firstname, lastname, middleinitial, birthdate, gender, phone, province, city, barangay, street
-                    })
-                });
+        btnRegister.onclick = async () => {
+            let firstname = inputFirstName.value;
+            let lastname = inputLastName.value;
+            let middleinitial = inputMiddleInitial.value;
+            let birthdate = inputBirthdate.value;
+            let gender = selectGender.value;
+            let phone = inputPhone.value;
+            let province = selectProvince.value;
+            let city = selectCity.value;
+            let barangay = selectBarangay.value;
+            let street = inputStreet.value;
 
-                let json = await response.json();
-                console.log(json);
+            let response = await fetch("api/register/", {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstname, lastname, middleinitial, birthdate, gender, phone, province, city, barangay, street
+                })
+            });
 
-                if (response.ok == false) {
-                    alert("Failed to register. Please check your internet connection.");
-                    return;
-                }
+            let json = await response.json();
+            console.log(json);
 
-                g_data.session = json.session;
-                g_saveData();
-                location.href = "editMedical.html";
+            if (response.ok == false) {
+                alert("Failed to register. Please check your internet connection.");
+                return;
             }
-        </script>
-    </body>
+
+            g_data.session = json.session;
+            g_saveData();
+            location.href = "editMedical.html";
+        }
+    </script>
+</body>
+
 </html>
