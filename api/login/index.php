@@ -44,16 +44,6 @@ try {
         ])
     ]);
 
-    if ($response["ok"] == false) {
-        http_response_code(500);
-
-        echo json_encode([
-            "error" => $response["body"]
-        ]);
-
-        exit;
-    }
-
     echo json_encode([
         "message" => "Email sent"
     ]);
