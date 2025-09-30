@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;">
+            <div style="
+                display: flex;
+                background-color: #00f;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;"
+                    id="btnBack">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    min-width: 0;
+                    padding: 1rem;
+                    padding-left: 0rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;">
+                    Results
+                </div>
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;
+                overflow: auto;"
+                id="panelCases">
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const btnBack = document.getElementById("btnBack");
+            const panelCases = document.getElementById("panelCases");
+            initialize();
+
+            async function initialize() {
+                const user = await g_getUser();
+
+                const response = await fetch("api/case/", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                for (const case_report of data.cases) {
+                    panelCases.innerHTML += /*html*/`
+                        <div style="
+                            display: flex;
+                            border-bottom: 1px solid #555;"
+                            onclick="openCase(this)"
+                            data-id="${case_report.id}">
+                            <div style="
+                                flex: 1;
+                                min-width: 0;">
+                                <div style="
+                                    padding: 1rem;
+                                    font-weight: bold;">
+                                    ${new Date(case_report.time * 1000).toLocaleString()}
+                                </div>
+                                <div style="
+                                    padding: 1rem;
+                                    padding-top: 0rem;">
+                                    <div style="
+                                        display: -webkit-box;
+                                        -webkit-box-orient: vertical;
+                                        -webkit-line-clamp: 3;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        word-wrap: break-word;">
+                                        ${g_escapeHtml(case_report.preliminary_impression)}
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem;
+                                text-decoration: underline;">
+                                View
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            function openCase(element) {
+                location.href = "case.html?id=" + element.dataset.id;
+            }
+
+            btnBack.onclick = () => location.href = "home.html";
+        </script>
+    </body>
+</html>
