@@ -1,0 +1,333 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      button {
+        background-color: #fff;
+        color: #000;
+      }
+
+      input {
+        background-color: transparent;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      p {
+        margin-block-start: 0rem;
+        margin-block-end: 0rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="flex: 1; min-height: 0; padding-top: 2rem"
+        id="panelChat"
+      ></div>
+      <div style="display: flex; background-color: #00f">
+        <div
+          style="display: flex; align-items: center; padding: 1rem"
+          id="btnMic"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm-40 240v-83q-92-13-157.5-78T203-479q-2-17 9-29t28-12q17 0 28.5 11.5T284-480q14 70 69.5 115T480-320q72 0 127-45.5T676-480q4-17 15.5-28.5T720-520q17 0 28 12t9 29q-14 91-79 157t-158 79v83q0 17-11.5 28.5T480-120q-17 0-28.5-11.5T440-160Z"
+            />
+          </svg>
+        </div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            padding: 1rem;
+            padding-left: 0rem;
+          "
+        >
+          <input id="inputMessage" placeholder="Enter a message" />
+        </div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            padding-left: 0rem;
+          "
+          id="btnSend"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="M176-183q-20 8-38-3.5T120-220v-180l320-80-320-80v-180q0-22 18-33.5t38-3.5l616 260q25 11 25 37t-25 37L176-183Z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        style="position: absolute; top: 0rem; left: 0rem; padding: 1rem"
+        id="btnBack"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#1f1f1f"
+        >
+          <path
+            d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"
+          />
+        </svg>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked@16.3.0/lib/marked.umd.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      const panelChat = document.getElementById("panelChat");
+      const btnMic = document.getElementById("btnMic");
+      const inputMessage = document.getElementById("inputMessage");
+      const btnBack = document.getElementById("btnBack");
+      const messages = [];
+      initialize();
+
+      async function initialize() {
+        const user = await g_getUser();
+
+        messages.push({
+          role: "assistant",
+          content: `Hello, ${user.firstname}! I'm your virtual health assistant. To start, please tell me your reason for this consultation.`,
+        });
+
+        renderChat();
+      }
+
+      function renderChat() {
+        panelChat.innerHTML = "";
+
+        for (const message of messages) {
+          if (message.type == "finish_consultation") {
+            panelChat.innerHTML += /*html*/ `
+                            <div style="
+                                display: flex;">
+                                <div style="
+                                    flex: 1;
+                                    min-width: 0;
+                                    padding: 1rem;">
+                                    <div style="
+                                        background-color: #00f;
+                                        color: #fff;
+                                        border-radius: 1rem;">
+                                        <div style="
+                                            padding: 1rem;">
+                                            ${marked.parse(message.content)}
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-top: 0rem;">
+                                            <button style="
+                                                width: 100%;"
+                                                onclick="finishConsultation(this)"
+                                                data-value="${g_escapeHtml(
+                                                  JSON.stringify(message.args)
+                                                )}">
+                                                Finish Consultation
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="
+                                    width: 5rem;">
+                                </div>
+                            </div>
+                        `;
+
+            continue;
+          }
+
+          switch (message.role) {
+            case "assistant":
+              {
+                panelChat.innerHTML += /*html*/ `
+                                <div style="
+                                    display: flex;">
+                                    <div style="
+                                        flex: 1;
+                                        min-width: 0;
+                                        padding: 1rem;">
+                                        <div style="
+                                            background-color: #00f;
+                                            color: #fff;
+                                            padding: 1rem;
+                                            border-radius: 1rem;">
+                                            ${marked.parse(message.content)}
+                                        </div>
+                                    </div>
+                                    <div style="
+                                        width: 5rem;">
+                                    </div>
+                                </div>
+                            `;
+              }
+              break;
+            case "user":
+              {
+                panelChat.innerHTML += /*html*/ `
+                                <div style="
+                                    display: flex;">
+                                    <div style="
+                                        width: 5rem;">
+                                    </div>
+                                    <div style="
+                                        flex: 1;
+                                        min-width: 0;
+                                        padding: 1rem;">
+                                        <div style="
+                                            background-color: #fff;
+                                            color: #000;
+                                            padding: 1rem;
+                                            border-radius: 1rem;">
+                                            ${marked.parse(message.content)}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+              }
+              break;
+          }
+        }
+
+        panelChat.scrollTop = panelChat.scrollHeight;
+      }
+
+      async function finishConsultation(element) {
+        element.disabled = true;
+
+        element.innerHTML = /*html*/ `
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+        const result = JSON.parse(element.dataset.value);
+
+        const response = await fetch("api/case/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: g_data.session,
+          },
+          body: JSON.stringify({
+            urgency: result.urgency,
+            preliminary_impression: result.preliminary_impression,
+            self_care_advice: result.self_care_advice,
+            details: result.details,
+          }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+        location.href = "case.html?id=" + data.id;
+      }
+
+      btnBack.onclick = () => (location.href = "home.html");
+
+      btnMic.onclick = async () => {
+        if (
+          ("speechRecognition" in window ||
+            "webkitSpeechRecognition" in window) == false
+        ) {
+          alert("Speech Recognition is not supported in this browser.");
+          return;
+        }
+
+        let originalClick = btnMic.onclick;
+        let originalHtml = btnMic.innerHTML;
+
+        btnMic.innerHTML = /*html*/ `
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M672-377q-14-8-18-24.5t4-30.5q7-11 11.5-23.5T676-481q4-17 15.5-28t28.5-11q17 0 28 12t9 29q-3 23-10.5 45T727-392q-8 14-24.5 18.5T672-377ZM532-542 383-691q-11-11-17-25.5t-6-30.5v-13q0-50 35-85t85-35q50 0 85 35t35 85v189q0 27-24.5 37.5T532-542Zm-92 382v-84q-92-12-157.5-77T203-479q-2-17 9-29t28-12q17 0 28.5 11.5T284-480q14 70 69.5 115T480-320q34 0 64.5-10.5T600-360l57 57q-29 23-63.5 38.5T520-244v84q0 17-11.5 28.5T480-120q-17 0-28.5-11.5T440-160Zm324 76L84-764q-11-11-11-28t11-28q11-11 28-11t28 11l680 680q11 11 11 28t-11 28q-11 11-28 11t-28-11Z"/></svg>
+                `;
+
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        const speech = new SpeechRecognition();
+        speech.lang = "en-US";
+        speech.interimResults = false;
+        speech.start();
+
+        btnMic.onclick = () => {
+          speech.stop();
+          btnMic.innerHTML = originalHtml;
+          btnMic.onclick = originalClick;
+        };
+
+        speech.onresult = (event) => {
+          let result = event.results[0][0].transcript;
+          btnMic.innerHTML = originalHtml;
+          inputMessage.value += result;
+        };
+      };
+
+      btnSend.onclick = async () => {
+        messages.push({
+          role: "user",
+          content: inputMessage.value,
+        });
+
+        inputMessage.value = "";
+        inputMessage.disabled = true;
+        let originalClick = btnSend.onclick;
+        let originalHtml = btnSend.innerHTML;
+        btnSend.onclick = null;
+
+        btnSend.innerHTML = /*html*/ `
+                    <svg width="24px" height="24px" stroke="#e3e3e3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3" stroke-linecap="round"><animate attributeName="stroke-dasharray" dur="1.5s" calcMode="spline" values="0 150;42 150;42 150;42 150" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" dur="1.5s" calcMode="spline" values="0;-16;-59;-59" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/></circle><animateTransform attributeName="transform" type="rotate" dur="2s" values="0 12 12;360 12 12" repeatCount="indefinite"/></g></svg>
+                `;
+
+        renderChat();
+
+        const response = await fetch("api/chat/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: g_data.session,
+          },
+          body: JSON.stringify({
+            messages: messages,
+          }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+        messages.push(data.message);
+        btnSend.onclick = originalClick;
+        btnSend.innerHTML = originalHtml;
+        inputMessage.disabled = false;
+        renderChat();
+      };
+    </script>
+  </body>
+</html>
