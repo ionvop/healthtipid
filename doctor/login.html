@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                color: #00f;
+            }
+
+            button {
+                width: 100%;
+                background-color: #00f;
+                color: #fff;
+            }
+
+            input {
+                background-color: transparent;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;">
+            <div style="
+                flex: 1;
+                min-height: 0;">
+            </div>
+            <div style="
+                padding: 1rem;
+                text-align: center;">
+                <img style="
+                    width: 10rem;
+                    height: 10rem;
+                    object-fit: contain;"
+                    src="assets/logo.png">
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;">
+            </div>
+            <div style="
+                padding: 1rem;">
+                <div style="
+                    display: flex;
+                    border-bottom: 1px solid #00f;">
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        padding: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-287q5 0 10.5-1.5T501-453l283-177q8-5 12-12.5t4-16.5q0-20-17-30t-35 1L480-520 212-688q-18-11-35-.5T160-659q0 10 4 17.5t12 11.5l283 177q5 3 10.5 4.5T480-447Z"/></svg>
+                    </div>
+                    <div style="
+                        display: flex;
+                        align-items: center;">
+                        <input style="
+                            border-radius: 0;"
+                            id="inputEmail"
+                            type="email"
+                            placeholder="Email">
+                    </div>
+                </div>
+            </div>
+            <div style="
+                padding: 1rem;"
+                id="panelSend">
+                <button id="btnSend">
+                    Send OTP to Email
+                </button>
+            </div>
+            <div style="
+                display: none;
+                padding: 1rem;"
+                id="panelCode">
+                <div style="
+                    display: flex;
+                    border-bottom: 1px solid #00f;">
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        padding: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M280-360q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0 120q77 0 139-44t87-116h14l52 52q6 6 13 8.5t15 2.5q8 0 15-2.5t13-8.5l52-52 70 55q6 5 13.5 7.5T779-336q8-1 14.5-4.5T805-350l90-103q5-6 7.5-13t2.5-15q0-8-3-14.5t-8-11.5l-41-41q-6-6-13.5-9t-15.5-3H506q-24-68-84.5-114T280-720q-100 0-170 70T40-480q0 100 70 170t170 70Z"/></svg>
+                    </div>
+                    <div style="
+                        display: flex;
+                        align-items: center;">
+                        <input style="
+                            border-radius: 0;"
+                            id="inputCode"
+                            placeholder="Code">
+                    </div>
+                </div>
+            </div>
+            <div style="
+                display: none;
+                padding: 1rem;"
+                id="panelVerify">
+                <button id="btnVerify">
+                    Verify OTP
+                </button>
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;">
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            let inputEmail = document.getElementById("inputEmail");
+            let panelSend = document.getElementById("panelSend");
+            let btnSend = document.getElementById("btnSend");
+            let panelCode = document.getElementById("panelCode");
+            let panelVerify = document.getElementById("panelVerify");
+            let inputCode = document.getElementById("inputCode");
+            let btnVerify = document.getElementById("btnVerify");
+
+            btnSend.onclick = async () => {
+                let email = inputEmail.value;
+                inputEmail.disabled = true;
+                btnSend.disabled = true;
+                let originalBtnSend = btnSend.innerHTML;
+                
+                btnSend.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                let response = await fetch("api/login/", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email
+                    })
+                });
+
+                let json = await response.json();
+                console.log(json);
+
+                if (response.ok == false) {
+                    inputEmail.disabled = false;
+                    btnSend.disabled = false;
+                    btnSend.innerHTML = originalBtnSend;
+                    alert("Failed to send email");
+                    return;
+                }
+
+                panelSend.style.display = "none";
+                panelCode.style.display = "block";
+                panelVerify.style.display = "block";
+            }
+
+            btnVerify.onclick = async () => {
+                let code = inputCode.value;
+                let email = inputEmail.value;
+                inputCode.disabled = true;
+                btnVerify.disabled = true;
+                let originalBtnVerify = btnVerify.innerHTML;
+                
+                btnVerify.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                let response = await fetch("api/login/verify/", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        code
+                    })
+                });
+
+                if (response.status == 404) {
+                    location.href = "register.html?email=" + encodeURIComponent(email);
+                    return;
+                }
+
+                if (response.ok == false) {
+                    inputCode.disabled = false;
+                    btnVerify.disabled = false;
+                    btnVerify.innerHTML = originalBtnVerify;
+                    alert("Failed to verify email");
+                    return;
+                }
+
+                response = await response.json();
+                console.log(response);
+                g_data.session = response.session;
+                g_saveData();
+                location.href = "index.html";
+            }
+        </script>
+    </body>
+</html>
