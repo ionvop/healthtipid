@@ -6,51 +6,64 @@ header("Content-Type: application/json");
 $db = new SQLite3("database.db");
 
 try {
-    $_POST = json_decode(file_get_contents('php://input'), true);
-    session_start();
+    switch ($_SERVER["REQUEST_METHOD"]) {
+        case "POST":
+            $_POST = json_decode(file_get_contents('php://input'), true);
+            session_start();
 
-    if ($_POST["code"] != $_SESSION["code"]) {
-        http_response_code(400);
+            if ($_POST["code"] != $_SESSION["code"]) {
+                http_response_code(400);
 
-        echo json_encode([
-            "error" => "Invalid code"
-        ]);
+                echo json_encode([
+                    "error" => "Invalid code"
+                ]);
 
-        exit;
+                exit;
+            }
+
+            $query = <<<SQL
+                SELECT * FROM `users` WHERE `email` = :email
+            SQL;
+
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(":email", $_SESSION["email"]);
+            $user = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+
+            if ($user == false) {
+                http_response_code(404);
+
+                echo json_encode([
+                    "error" => "User not found"
+                ]);
+
+                exit;
+            }
+
+            $session = uniqid("session-");
+
+            $query = <<<SQL
+                UPDATE `users` SET `session` = :session WHERE `id` = :id
+            SQL;
+
+            $stmt = $db->prepare($query);
+            $stmt->bindValue(":session", $session);
+            $stmt->bindValue(":id", $user["id"]);
+            $stmt->execute();
+
+            echo json_encode([
+                "session" => $session
+            ]);
+
+            exit;
+        default:
+            http_response_code(405);
+
+            echo json_encode([
+                "error" => "Method not allowed"
+            ]);
+
+            exit;
     }
-
-    $query = <<<SQL
-        SELECT * FROM `users` WHERE `email` = :email
-    SQL;
-
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(":email", $_SESSION["email"]);
-    $user = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
-
-    if ($user == false) {
-        http_response_code(404);
-
-        echo json_encode([
-            "error" => "User not found"
-        ]);
-
-        exit;
-    }
-
-    $session = uniqid("session-");
-
-    $query = <<<SQL
-        UPDATE `users` SET `session` = :session WHERE `id` = :id
-    SQL;
-
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(":session", $session);
-    $stmt->bindValue(":id", $user["id"]);
-    $stmt->execute();
-
-    echo json_encode([
-        "session" => $session
-    ]);
 } catch (Exception $e) {
     http_response_code(500);
 
