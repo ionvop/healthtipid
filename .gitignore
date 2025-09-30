@@ -1,3 +1,5 @@
 api/config.php
 api/database.db
 api/logs/*
+api/uploads/avatar/*
+!api/uploads/avatar/image.png
