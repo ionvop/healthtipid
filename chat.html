@@ -188,8 +188,32 @@
                 panelChat.scrollTop = panelChat.scrollHeight;
             }
 
-            function finishConsultation(element) {
-                location.href = "result.html?data=" + encodeURIComponent(element.dataset.value);
+            async function finishConsultation(element) {
+                element.disabled = true;
+
+                element.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                const result = JSON.parse(element.dataset.value);
+
+                const response = await fetch("api/case/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    },
+                    body: JSON.stringify({
+                        urgency: result.urgency,
+                        preliminary_impression: result.preliminary_impression,
+                        self_care_advice: result.self_care_advice,
+                        details: result.details
+                    })
+                });
+
+                const data = await response.json();
+                console.log(data);
+                location.href = "case.html?id=" + data.id;
             }
             
             btnBack.onclick = () => location.href = "home.html";
