@@ -18,7 +18,7 @@ function g_loadData() {
 }
 
 function g_saveData() {
-    localStorage.setItem("20250904_data", JSON.stringify(data));
+    localStorage.setItem("20250904_data", JSON.stringify(g_data));
 }
 
 function g_elementFromHTML(html) {
