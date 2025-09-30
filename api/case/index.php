@@ -22,36 +22,57 @@ try {
                 exit;
             }
 
+            if (isset($_GET["id"])) {
+                $query = <<<SQL
+                    SELECT * FROM `cases` WHERE `id` = :id
+                SQL;
+
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(":id", $_GET["id"]);
+                $case = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+
+                if ($case == false) {
+                    http_response_code(404);
+
+                    echo json_encode([
+                        "error" => "Case not found"
+                    ]);
+
+                    exit;
+                }
+
+                if ($case["user_id"] != $user["id"]) {
+                    http_response_code(403);
+
+                    echo json_encode([
+                        "error" => "Case not found"
+                    ]);
+
+                    exit;
+                }
+
+                echo json_encode([
+                    "case" => $case
+                ]);
+
+                exit;
+            }
+
             $query = <<<SQL
-                SELECT * FROM `cases` WHERE `id` = :id
+                SELECT * FROM `cases` WHERE `user_id` = :user_id
             SQL;
 
             $stmt = $db->prepare($query);
-            $stmt->bindValue(":id", $_GET["id"]);
-            $case = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+            $stmt->bindValue(":user_id", $user["id"]);
+            $result = $stmt->execute();
+            $cases = [];
 
-            if ($case == false) {
-                http_response_code(404);
-
-                echo json_encode([
-                    "error" => "Case not found"
-                ]);
-
-                exit;
-            }
-
-            if ($case["user_id"] != $user["id"]) {
-                http_response_code(403);
-
-                echo json_encode([
-                    "error" => "Case not found"
-                ]);
-
-                exit;
+            while ($case = $result->fetchArray(SQLITE3_ASSOC)) {
+                $cases[] = $case;
             }
 
             echo json_encode([
-                "case" => $case
+                "cases" => $cases
             ]);
 
             exit;
