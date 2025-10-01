@@ -1,0 +1,300 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            button {
+                background-color: var(--theme);
+                color: #fff;
+            }
+
+            input {
+                background-color: transparent;
+                border-bottom: 1px solid var(--theme);
+            }
+        </style>
+    </head>
+    <body>
+        <div style="
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;">
+            <div style="
+                display: flex;
+                background-color: var(--theme);">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;"
+                    id="btnMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"/></svg>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    min-width: 0;
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;">
+                    HealthTipid - Doctor
+                </div>
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;
+                overflow: auto;">
+                <div style="
+                    display: flex;
+                    border-bottom: 1px solid #555;">
+                    <div style="
+                        padding: 1rem;">
+                        <img style="
+                            width: 5rem;
+                            height: 5rem;
+                            border-radius: 50%;
+                            object-fit: cover;"
+                            src="../api/uploads/avatar/image.png"
+                            id="imgAvatar">
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;">
+                        <div style="
+                            padding: 1rem;
+                            font-size: 1.5rem;
+                            font-weight: bold;"
+                            id="panelFullname">
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-top: 0rem;
+                            color: #555;"
+                            id="panelTitle">
+                        </div>
+                    </div>
+                    <div style="
+                        padding: 1rem;"
+                        id="btnEdit">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-400q-17 0-28.5-11.5T160-440q0-17 11.5-28.5T200-480h200q17 0 28.5 11.5T440-440q0 17-11.5 28.5T400-400H200Zm0-160q-17 0-28.5-11.5T160-600q0-17 11.5-28.5T200-640h360q17 0 28.5 11.5T600-600q0 17-11.5 28.5T560-560H200Zm0-160q-17 0-28.5-11.5T160-760q0-17 11.5-28.5T200-800h360q17 0 28.5 11.5T600-760q0 17-11.5 28.5T560-720H200Zm320 520v-66q0-8 3-15.5t9-13.5l209-208q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T863-380L655-172q-6 6-13.5 9t-15.5 3h-66q-17 0-28.5-11.5T520-200Zm263-184 37-39-37-37-38 38 38 38ZM580-220h38l121-122-18-19-19-18-122 121v38Zm0 0v-38l122-121 37 37-121 122h-38Z"/></svg>
+                    </div>
+                </div>
+                <div style="
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;">
+                    Available timeslots
+                </div>
+                <div style="
+                    display: flex;
+                    border-bottom: 1px solid #555;">
+                    <div style="
+                        flex: 1;
+                        min-width: 0;">
+                        <div style="
+                            padding: 1rem;
+                            font-weight: bold;">
+                            Start
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-top: 0rem;">
+                            <input type="datetime-local"
+                                id="inputDateStart">
+                        </div>
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;">
+                        <div style="
+                            padding: 1rem;
+                            padding-left: 0rem;
+                            font-weight: bold;">
+                            End
+                        </div>
+                        <div style="
+                            padding: 1rem;
+                            padding-top: 0rem;
+                            padding-left: 0rem;">
+                            <input type="datetime-local"
+                                id="inputDateEnd">
+                        </div>
+                    </div>
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        padding: 1rem;
+                        padding-left: 0rem;">
+                        <button id="btnAdd">
+                            Add
+                        </button>
+                    </div>
+                </div>
+                <div id="panelTimeslots">
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const btnMenu = document.getElementById("btnMenu");
+            const imgAvatar = document.getElementById("imgAvatar");
+            const panelFullname = document.getElementById("panelFullname");
+            const panelTitle = document.getElementById("panelTitle");
+            const btnEdit = document.getElementById("btnEdit");
+            const panelTimeslots = document.getElementById("panelTimeslots");
+            const inputDateStart = document.getElementById("inputDateStart");
+            const inputDateEnd = document.getElementById("inputDateEnd");
+            const btnAdd = document.getElementById("btnAdd");
+            let timeslots = [];
+            initialize();
+
+            async function initialize() {
+                const user = await g_getUser();
+                imgAvatar.src = `../api/uploads/avatar/${user.avatar}`;
+                panelFullname.textContent = user.fullname;
+                panelTitle.textContent = user.professional_title;
+
+                const response = await fetch("../api/doctor/timeslots/", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+                timeslots = data.timeslots;
+                renderTimeslots();
+            }
+
+            function renderTimeslots() {
+                timeslots.sort((a, b) => a.start_time - b.start_time);
+                panelTimeslots.innerHTML = "";
+
+                for (const timeslot of timeslots) {
+                    panelTimeslots.innerHTML += /*html*/`
+                        <div style="
+                            display: flex;
+                            border-bottom: 1px solid #555;">
+                            <div style="
+                                flex: 1;
+                                min-width: 0;">
+                                <div style="
+                                    display: flex;">
+                                    <div style="
+                                        padding: 1rem;
+                                        font-weight: bold;">
+                                        Start:
+                                    </div>
+                                    <div style="
+                                        padding: 1rem;
+                                        padding-left: 0rem;">
+                                        ${new Date(timeslot.start_time * 1000).toLocaleString()}
+                                    </div>
+                                </div>
+                                <div style="
+                                    display: flex;">
+                                    <div style="
+                                        padding: 1rem;
+                                        padding-top: 0rem;
+                                        font-weight: bold;">
+                                        End:
+                                    </div>
+                                    <div style="
+                                        padding: 1rem;
+                                        padding-top: 0rem;
+                                        padding-left: 0rem;">
+                                        ${new Date(timeslot.end_time * 1000).toLocaleString()}
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem;"
+                                onclick="removeTimeslot(this)"
+                                data-id="${timeslot.id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M240-440q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h480q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H240Z"/></svg>
+                            </div>
+                        </div>
+                    `
+                }
+            }
+
+            async function removeTimeslot(element) {
+                if (confirm("Are you sure you want to remove this timeslot?") == false) return;
+                let id = element.dataset.id;
+                element.onclick = null;
+
+                element.innerHTML = /*html*/ `
+                    <svg width="24px" height="24px" stroke="#1f1f1f" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3" stroke-linecap="round"><animate attributeName="stroke-dasharray" dur="1.5s" calcMode="spline" values="0 150;42 150;42 150;42 150" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" dur="1.5s" calcMode="spline" values="0;-16;-59;-59" keyTimes="0;0.475;0.95;1" keySplines="0.42,0,0.58,1;0.42,0,0.58,1;0.42,0,0.58,1" repeatCount="indefinite"/></circle><animateTransform attributeName="transform" type="rotate" dur="2s" values="0 12 12;360 12 12" repeatCount="indefinite"/></g></svg>
+                `;
+                
+                const response = await fetch(`../api/doctor/timeslots/?id=${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+                timeslots = data.timeslots;
+                renderTimeslots();
+            }
+
+            btnMenu.onclick = () => location.href = "menu.html";
+            imgAvatar.onclick = () => location.href = "editAvatar.html";
+            btnEdit.onclick = () => location.href = "editProfile.html";
+
+            inputDateStart.onchange = () => {
+                inputDateEnd.min = inputDateStart.value;
+                inputDateEnd.value = inputDateStart.value;
+            }
+
+            btnAdd.onclick = async () => {
+                btnAdd.disabled = true;
+                let originalHtml = btnAdd.innerHTML;
+                
+                btnAdd.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                let startTime = new Date(inputDateStart.value).getTime() / 1000;
+                let endTime = new Date(inputDateEnd.value).getTime() / 1000;
+
+                if (startTime > endTime) {
+                    alert("Start time must be before end time.");
+                    btnAdd.innerHTML = originalHtml;
+                    btnAdd.disabled = false;
+                    return;
+                }
+
+                inputDateStart.value = "";
+                inputDateEnd.value = "";
+
+                const response = await fetch("../api/doctor/timeslots/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    },
+                    body: JSON.stringify({
+                        start_time: startTime,
+                        end_time: endTime
+                    })
+                });
+
+                const data = await response.json();
+                console.log(data);
+                timeslots = data.timeslots;
+                renderTimeslots();
+                btnAdd.innerHTML = originalHtml;
+                btnAdd.disabled = false;
+            }
+        </script>
+    </body>
+</html>
