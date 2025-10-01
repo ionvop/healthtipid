@@ -1,0 +1,530 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;">
+            <div style="
+                display: flex;
+                background-color: #056CF2;">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;"
+                    id="btnBack">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z" /></svg>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    min-width: 0;
+                    padding: 1rem;
+                    padding-left: 0rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;">
+                    Medical Information
+                </div>
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;
+                overflow: auto;">
+                <div style="
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;">
+                    Patient Details
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;
+                    text-align: center;">
+                    <img style="
+                        width: 10rem;
+                        height: 10rem;
+                        border-radius: 50%;
+                        object-fit: cover;"
+                        src="../api/uploads/avatar/image.png"
+                        id="imgAvatar">
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;"
+                    id="panelFullname">
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Birthdate:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelBirthdate">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Gender:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelGender">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Email:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelEmail">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Phone:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelPhone">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Address:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelAddress">
+                    </div>
+                </div>
+                <div style="
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;">
+                    Medical Information:
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Height (cm):
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelHeight">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Weight (kg):
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelWeight">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Blood Type:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelBlood">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Allergies:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelAllergies">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Chronic Conditions:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelConditions">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Immunization Status:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelImmunization">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Major Illnesses / Past Surgeries:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelIllnesses">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Current Medications:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelMedications">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Family Medical History:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelFamily">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Smoking Status:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelSmoking">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Alcohol Use:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelAlcohol">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Physical Activity:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelActivity">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Dietary Habits:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelDiet">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        max-width: 10rem;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        font-weight: bold;">
+                        Last Updated:
+                    </div>
+                    <div style="
+                        flex: 1;
+                        min-width: 0;
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelUpdated">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const btnBack = document.getElementById("btnBack");
+            const imgAvatar = document.getElementById("imgAvatar");
+            const panelFullname = document.getElementById("panelFullname");
+            const panelBirthdate = document.getElementById("panelBirthdate");
+            const panelGender = document.getElementById("panelGender");
+            const panelEmail = document.getElementById("panelEmail");
+            const panelPhone = document.getElementById("panelPhone");
+            const panelAddress = document.getElementById("panelAddress");
+            const panelHeight = document.getElementById("panelHeight");
+            const panelWeight = document.getElementById("panelWeight");
+            const panelBlood = document.getElementById("panelBlood");
+            const panelAllergies = document.getElementById("panelAllergies");
+            const panelConditions = document.getElementById("panelConditions");
+            const panelImmunization = document.getElementById("panelImmunization");
+            const panelIllnesses = document.getElementById("panelIllnesses");
+            const panelMedications = document.getElementById("panelMedications");
+            const panelFamily = document.getElementById("panelFamily");
+            const panelSmoking = document.getElementById("panelSmoking");
+            const panelAlcohol = document.getElementById("panelAlcohol");
+            const panelActivity = document.getElementById("panelActivity");
+            const panelDiet = document.getElementById("panelDiet");
+            const panelUpdated = document.getElementById("panelUpdated");
+            initialize();
+
+            async function initialize() {
+                let id = new URLSearchParams(window.location.search).get("id");
+
+                const response = await fetch(`../api/doctor/user/?id=${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+                const user = data.user;
+                imgAvatar.src = `../api/uploads/avatar/${user.avatar}`;
+                panelFullname.textContent = `${user.lastname}, ${user.firstname} ${user.middleinitial}`;
+                panelBirthdate.textContent = user.birthdate;
+                panelGender.textContent = user.gender;
+                panelEmail.textContent = user.email;
+                panelPhone.textContent = user.phone;
+                panelAddress.textContent = user.street;
+
+                if (user.barangay != "") {
+                    const response = await fetch(`https://psgc.cloud/api/v2/barangays/${user.barangay}`);
+                    const data = await response.json();
+                    panelAddress.textContent += `, ${data.data.name}`;
+                }
+
+                if (user.city != "") {
+                    const response = await fetch(`https://psgc.cloud/api/v2/cities-municipalities/${user.city}`);
+                    const data = await response.json();
+                    panelAddress.textContent += `, ${data.data.name}`;
+                }
+
+                if (user.province != "") {
+                    const response = await fetch(`https://psgc.cloud/api/v2/provinces/${user.province}`);
+                    const data = await response.json();
+                    panelAddress.textContent += `, ${data.data.name}`;
+                }
+
+                panelHeight.textContent = user.height;
+                panelWeight.textContent = user.weight;
+                panelBlood.textContent = user.blood_type;
+                panelAllergies.textContent = user.allergies;
+                panelIllnesses.textContent = user.major_illnesses;
+                panelMedications.textContent = user.current_medications;
+                panelFamily.textContent = user.family_medical_history;
+                panelSmoking.textContent = user.smoking_status;
+                panelAlcohol.textContent = user.alcohol_use;
+                panelActivity.textContent = user.physical_activity;
+                panelDiet.textContent = user.dietary_habits;
+                panelUpdated.textContent = new Date(user.last_updated * 1000).toLocaleString();
+                const chronicConditions = JSON.parse(user.chronic_conditions);
+                const immunizationStatus = JSON.parse(user.immunization_status);
+                console.log(chronicConditions);
+                console.log(immunizationStatus);
+
+                const chronicConditionsMap = {
+                    diabetes: "Diabetes",
+                    hypertension: "Hypertension",
+                    asthma: "Asthma",
+                    kidneydisease: "Kidney Disease",
+                    heartdisease: "Heart Disease",
+                    cancer: "Cancer",
+                    epilepsy: "Epilepsy",
+                    other: chronicConditions.other
+                };
+
+                const immunizationStatusMap = {
+                    covid19: "COVID-19",
+                    flu: "Flu",
+                    hepatitisB: "Hepatitis B",
+                    tetanus: "Tetanus",
+                    mmr: "MMR",
+                    other: immunizationStatus.other
+                };
+
+                for (let value in chronicConditions) {
+                    if (value == "other") {
+                        if (chronicConditions[value] != "") panelConditions.innerHTML += /*html*/`${g_escapeHtml(chronicConditionsMap[value])}<br>`;
+                        continue;
+                    }
+
+                    if (chronicConditions[value] == true) panelConditions.innerHTML += /*html*/`${g_escapeHtml(chronicConditionsMap[value])}<br>`;
+                }
+
+                for (let value in immunizationStatus) {
+                    if (value == "other") {
+                        if (immunizationStatus[value] != "") panelImmunization.innerHTML += /*html*/`${g_escapeHtml(immunizationStatusMap[value])}<br>`;
+                        continue;
+                    }
+
+                    if (immunizationStatus[value] == true) panelImmunization.innerHTML += /*html*/`${g_escapeHtml(immunizationStatusMap[value])}<br>`;
+                }
+            }
+
+            btnBack.onclick = () => history.back();
+        </script>
+    </body>
+</html>
