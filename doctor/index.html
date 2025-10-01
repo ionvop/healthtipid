@@ -10,7 +10,13 @@
         <div></div>
         <script src="script.js"></script>
         <script>
+            initialize();
 
+            async function initialize() {
+                const user = await g_getUser();
+                if (user == null) return;
+                location.href = "home.html";
+            }
         </script>
     </body>
 </html>
