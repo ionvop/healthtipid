@@ -1,6 +1,6 @@
 <?php
 
-chdir("../");
+chdir("../../");
 require_once "common.php";
 header("Content-Type: application/json");
 
