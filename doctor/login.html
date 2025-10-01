@@ -10,6 +10,10 @@
             color: #fff;
         }
 
+        input {
+            background-color: transparent;
+        }
+
         input:focus {
             outline: none;
         }
@@ -120,13 +124,13 @@
             const inputCode = document.getElementById("inputCode");
             const btnVerify = document.getElementById("btnVerify");
 
-        btnSend.onclick = async () => {
-            let email = inputEmail.value;
-            inputEmail.disabled = true;
-            btnSend.disabled = true;
-            let originalBtnSend = btnSend.innerHTML;
+            btnSend.onclick = async () => {
+                let email = inputEmail.value;
+                inputEmail.disabled = true;
+                btnSend.disabled = true;
+                let originalBtnSend = btnSend.innerHTML;
 
-            btnSend.innerHTML = /*html*/`
+                btnSend.innerHTML = /*html*/`
                     <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
                 `;
 
@@ -148,16 +152,16 @@
                 panelVerify.style.display = "block";
             }
 
-        btnVerify.onclick = async () => {
-            let code = inputCode.value;
-            let email = inputEmail.value;
-            inputCode.disabled = true;
-            btnVerify.disabled = true;
-            let originalBtnVerify = btnVerify.innerHTML;
+            btnVerify.onclick = async () => {
+                let code = inputCode.value;
+                let email = inputEmail.value;
+                inputCode.disabled = true;
+                btnVerify.disabled = true;
+                let originalBtnVerify = btnVerify.innerHTML;
 
-            btnVerify.innerHTML = /*html*/`
-                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
-                `;
+                btnVerify.innerHTML = /*html*/`
+                        <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                    `;
 
                 const response = await fetch("../api/doctor/login/verify/", {
                     method: "POST",
@@ -170,10 +174,10 @@
                     })
                 });
 
-            if (response.status == 404) {
-                location.href = "register.html?email=" + encodeURIComponent(email);
-                return;
-            }
+                if (response.status == 404) {
+                    location.href = "register.html?email=" + encodeURIComponent(email);
+                    return;
+                }
 
                 const data = await response.json();
                 console.log(data);
