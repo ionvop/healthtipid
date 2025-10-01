@@ -105,3 +105,16 @@ function getUser($session) {
     $user = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
     return $user;
 }
+
+function getDoctor($session) {
+    $db = new SQLite3("database.db");
+
+    $query = <<<SQL
+        SELECT * FROM `doctors` WHERE `session` = :session
+    SQL;
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":session", $session);
+    $doctor = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+    return $doctor;
+}
