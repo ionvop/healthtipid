@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="manifest" href="manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;">
+            <div style="
+                padding: 1rem;
+                background-color: var(--theme);
+                color: #fff;
+                font-size: 1.5rem;
+                font-weight: bold;">
+                HealthTipid Doctors
+            </div>
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex: 1;
+                min-height: 0;">
+                <div style="
+                    display: none;"
+                    id="panelInstall">
+                    <button id="btnInstall">
+                        Install
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            const panelInstall = document.getElementById("panelInstall");
+            const btnInstall = document.getElementById("btnInstall");
+            initialize();
+
+            function initialize() {
+                if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js");
+                let deferredInstall;
+
+                window.addEventListener("beforeinstallprompt", (event) => {
+                    event.preventDefault();
+                    deferredInstall = event;
+                    panelInstall.style.display = "block";
+                    panelInstall.onclick = () => deferredInstall.prompt();
+                });
+            }
+        </script>
+    </body>
+</html>
