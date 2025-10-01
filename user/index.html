@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div>
+
+        </div>
+        <script src="script.js"></script>
+        <script>
+            initialize();
+
+            async function initialize() {
+                let user = await g_getUser();
+                if (user == null) return;
+                location.href = "home.html";
+            }
+        </script>
+    </body>
+</html>
