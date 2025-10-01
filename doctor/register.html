@@ -3,7 +3,20 @@
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            button {
+                background-color: var(--theme);
+                color: #fff;
+            }
 
+            input {
+                background-color: transparent;
+                border-bottom: 1px solid var(--theme);
+            }
+
+            textarea {
+                background-color: transparent;
+                border: 1px solid var(--theme);
+            }
         </style>
     </head>
     <body>
@@ -35,10 +48,154 @@
                     HealthTipid
                 </div>
             </div>
+            <div style="
+                flex: 1;
+                min-height: 0;
+                overflow: auto;">
+                <div style="
+                    padding: 1rem;
+                    text-align: center;
+                    font-size: 1.5rem;
+                    font-weight: bold;">
+                    Account Registration Form
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Full Name<span style="color: #f00">*</span>
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input id="inputFullname"
+                        placeholder="e.g. Juan Dela Cruz">
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Email<span style="color: #f00">*</span>
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input type="email"
+                        id="inputEmail"
+                        disabled>
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Phone
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input id="inputPhone"
+                        placeholder="e.g. 09123456789">
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    License Number
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input id="inputLicense"
+                        placeholder="e.g. PRC-1234567">
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Professional Title
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input id="inputTitle"
+                        placeholder="e.g. Cardiologist">
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Years of Experience
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input type="number"
+                        id="inputExperience"
+                        placeholder="e.g. 10">
+                </div>
+                <div style="
+                    padding: 1rem;">
+                    Bio
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <textarea id="inputBio"
+                        placeholder="Say something about yourself"></textarea>
+                </div>
+                <div style="
+                    padding: 1rem;
+                    text-align: right;">
+                    <button id="btnRegister">
+                        Register
+                    </button>
+                </div>
+            </div>
         </div>
         <script src="script.js"></script>
         <script>
+            const btnBack = document.getElementById("btnBack");
+            const inputFullname = document.getElementById("inputFullname");
+            const inputEmail = document.getElementById("inputEmail");
+            const inputPhone = document.getElementById("inputPhone");
+            const inputLicense = document.getElementById("inputLicense");
+            const inputTitle = document.getElementById("inputTitle");
+            const inputExperience = document.getElementById("inputExperience");
+            const inputBio = document.getElementById("inputBio");
+            const btnRegister = document.getElementById("btnRegister");
+            initialize();
 
+            async function initialize() {
+                let email = new URLSearchParams(location.search).get("email");
+                inputEmail.value = email;
+            }
+
+            btnBack.onclick = () => location.href = "login.html";
+
+            btnRegister.onclick = async () => {
+                if (inputFullname.value == "") {
+                    alert("Please enter your full name.");
+                    return;
+                }
+
+                btnRegister.disabled = true;
+                let originalHtml = btnRegister.innerHTML;
+
+                btnRegister.innerHTML = /*html*/`
+                    <svg fill="#e3e3e3" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" begin="0;spinner_OcgL.end+0.25s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="12" cy="12" r="3"><animate begin="spinner_qFRN.begin+0.1s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" begin="spinner_qFRN.begin+0.2s" attributeName="cy" calcMode="spline" dur="0.6s" values="12;6;12" keySplines=".33,.66,.66,1;.33,0,.66,.33"/></circle></svg>
+                `;
+
+                const response = await fetch("../api/doctor/register/", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fullname: inputFullname.value,
+                        email: inputEmail.value,
+                        phone: inputPhone.value,
+                        license: inputLicense.value,
+                        title: inputTitle.value,
+                        experience: inputExperience.value,
+                        bio: inputBio.value
+                    })
+                });
+
+                const data = await response.json();
+                console.log(data);
+                g_data.session = json.session;
+                g_saveData();
+                location.href = "home.html";
+            }
         </script>
     </body>
 </html>
