@@ -1,3 +1,7 @@
+:root {
+    --theme: #056CF2;
+}
+
 body {
     margin: 0rem;
     padding: 0rem;
