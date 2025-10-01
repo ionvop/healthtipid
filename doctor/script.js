@@ -37,7 +37,7 @@ function g_escapeHtml(unsafe) {
 }
 
 async function g_getUser() {
-    let response = await fetch("api/user/", {
+    let response = await fetch("../api/doctor/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -53,5 +53,5 @@ async function g_getUser() {
         return;
     }
 
-    return data.user;
+    return data.doctor;
 }
