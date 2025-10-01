@@ -120,6 +120,7 @@
 
         async function initialize() {
             let id = new URLSearchParams(window.location.search).get("id");
+            btnFind.onclick = async () => location.href = `find.html?id=${id}`;
 
             const response = await fetch(`../api/case/?id=${id}`, {
                 method: "GET",
@@ -184,11 +185,7 @@
             panelAdvice.textContent = data.case.self_care_advice;
         }
 
-            btnBack.onclick = () => location.href = "home.html";
-
-        btnFind.onclick = async () => {
-
-        }
+        btnBack.onclick = () => location.href = "home.html";
     </script>
 </body>
 
