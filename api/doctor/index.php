@@ -76,7 +76,8 @@ try {
                 `license_number` = :license_number,
                 `professional_title` = :professional_title,
                 `years_of_experience` = :years_of_experience,
-                `description` = :description
+                `description` = :description,
+                `consulation_fee` = :consulation_fee
                 WHERE `id` = :id
             SQL;
 
@@ -87,6 +88,7 @@ try {
             $stmt->bindValue(":professional_title", $_POST["title"]);
             $stmt->bindValue(":years_of_experience", $_POST["experience"]);
             $stmt->bindValue(":description", $_POST["bio"]);
+            $stmt->bindValue(":consulation_fee", $_POST["fee"]);
             $stmt->bindValue(":id", $doctor["id"]);
             $stmt->execute();
 
