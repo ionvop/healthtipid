@@ -13,11 +13,186 @@
             height: 100%;
             box-sizing: border-box;
             overflow: hidden;">
-
+            <div style="
+                display: flex;
+                background-color: var(--theme);">
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;"
+                    id="btnBack">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 196 196q12 12 11.5 28T508-188q-12 11-28 11.5T452-188L188-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l264-264q11-11 27.5-11t28.5 11q12 12 12 28.5T508-715L313-520h447q17 0 28.5 11.5T800-480q0 17-11.5 28.5T760-440H313Z"/></svg>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    min-width: 0;
+                    padding: 1rem;
+                    padding-left: 0rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;">
+                    Doctor Recommendations
+                </div>
+            </div>
+            <div style="
+                flex: 1;
+                min-height: 0;
+                overflow: auto;">
+                <div style="
+                    padding: 1rem;
+                    text-align: center;">
+                    <img style="
+                        width: 10rem;
+                        height: 10rem;
+                        border-radius: 50%;
+                        object-fit: cover;"
+                        src="../api/uploads/avatar/image.png"
+                        id="imgAvatar">
+                </div>
+                <div style="
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    text-align: center;"
+                    id="panelFullname">
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        Email address:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelEmail">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        Contact number:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelPhone">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        License number:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelLicense">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        Professional title:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelTitle">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        Years of Experience:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelExperience">
+                    </div>
+                </div>
+                <div style="
+                    display: flex;">
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        max-width: 10rem;
+                        font-weight: bold;">
+                        Bio:
+                    </div>
+                    <div style="
+                        padding: 1rem;
+                        padding-top: 0rem;
+                        padding-left: 0rem;"
+                        id="panelBio">
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="script.js"></script>
         <script>
+            const btnBack = document.getElementById("btnBack");
+            const imgAvatar = document.getElementById("imgAvatar");
+            const panelFullname = document.getElementById("panelFullname");
+            const panelEmail = document.getElementById("panelEmail");
+            const panelPhone = document.getElementById("panelPhone");
+            const panelLicense = document.getElementById("panelLicense");
+            const panelTitle = document.getElementById("panelTitle");
+            const panelExperience = document.getElementById("panelExperience");
+            const panelBio = document.getElementById("panelBio");
+            initialize();
 
+            async function initialize() {
+                let id = new URLSearchParams(location.search).get("id");
+
+                const response = await fetch(`../api/doctor/?id=${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+                imgAvatar.src = `../api/uploads/avatar/${data.doctor.avatar}`;
+                panelFullname.textContent = data.doctor.fullname;
+                panelEmail.textContent = data.doctor.email;
+                panelPhone.textContent = data.doctor.phone;
+                panelLicense.textContent = data.doctor.license_number;
+                panelTitle.textContent = data.doctor.professional_title;
+                panelExperience.textContent = data.doctor.years_of_experience;
+                panelBio.textContent = data.doctor.description;
+            }
+
+            btnBack.onclick = () => history.back();
         </script>
     </body>
 </html>
