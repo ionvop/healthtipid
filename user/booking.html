@@ -193,6 +193,7 @@
                 console.log(data);
                 btnDoctor.onclick = () => location.href = `doctor.html?id=${data.timeslot.doctor_id}`;
                 btnCase.onclick = () => location.href = `case.html?id=${data.timeslot.case_id}`;
+                btnChat.onclick = () => location.href = `doctorChat.html?id=${data.timeslot.case_id}`;
                 panelCurrentDatetime.textContent = new Date().toLocaleString();
                 panelTimeLeft.textContent = formatDuration(data.timeslot.start_time - Math.floor(Date.now() / 1000)) + " until the start of your appointment.";
                 panelStart.textContent = new Date(data.timeslot.start_time * 1000).toLocaleString();
