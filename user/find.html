@@ -182,7 +182,8 @@
 
             function selectDoctor(element) {
                 let caseId = new URLSearchParams(location.search).get("id");
-                location.href = `case.html?id=${caseId}&doctor=${element.dataset.id}`;
+                let doctorId = element.dataset.id;
+                location.href = `timeslot.html?id=${caseId}&doctor=${doctorId}`;
             }
 
             btnBack.onclick = () => history.back();
