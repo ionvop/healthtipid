@@ -1,41 +1,36 @@
 <html>
-
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        button {
-            background-color: #056CF2;
-            color: #fff;
-            border-radius: 1rem;
-        }
-    </style>
-</head>
-
-<body>
-    <div style="
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            button {
+                background-color: #056CF2;
+                color: #fff;
+                border-radius: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="
             position: relative;
             height: 100%;
             overflow: hidden;">
-        <div style="
+            <div style="
                 display: flex;
                 flex-direction: column;
                 height: 100%;
                 overflow: hidden;">
-            <div style="
+                <div style="
                     display: flex;
                     background-color: #056CF2;">
-                <div style="
+                    <div style="
                         display: flex;
                         align-items: center;
-                        padding: 1rem;" id="btnMenu">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="#e3e3e3">
-                        <path
-                            d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z" />
-                    </svg>
-                </div>
-                <div style="
+                        padding: 1rem;"
+                        id="btnMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z" /></svg>
+                    </div>
+                    <div style="
                         display: flex;
                         align-items: center;
                         flex: 1;
@@ -45,54 +40,46 @@
                         font-size: 1.5rem;
                         font-weight: bold;
                         color: #fff;">
-                    HealthTipid
-                </div>
-                <div style="
+                        HealthTipid
+                    </div>
+                    <div style="
                         display: flex;
                         align-items: center;
                         padding: 1rem;" id="btnProfile">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="#e3e3e3">
-                        <path
-                            d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Z" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Z" /></svg>
+                    </div>
                 </div>
-            </div>
-            <div style="
+                <div style="
                     flex: 1;
                     min-height: 0;
                     overflow: auto;">
-                <div style="
+                    <div style="
                         padding: 1rem;
                         text-align: center;
                         font-size: 2rem;
                         font-weight: bold;" id="panelWelcome">
-                    Hello, user!
-                </div>
-                <div style="
+                        Hello, user!
+                    </div>
+                    <div style="
                         padding: 1rem;
                         padding-top: 0rem;
                         text-align: center;
                         font-size: 1.5rem;">
-                    Welcome to HealthTipid
-                </div>
-                <div style="
+                        Welcome to HealthTipid
+                    </div>
+                    <div style="
                         padding: 1rem;
                         padding-top: 5rem;
                         text-align: center;">
-                    <button id="btnChat">
-                        <div style="
-                                display: flex;">
+                        <button id="btnChat">
                             <div style="
+                                display: flex;">
+                                <div style="
                                     display: flex;
                                     align-items: center;">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                    width="24px" fill="#e3e3e3">
-                                    <path
-                                        d="M240-80q-50 0-85-35t-35-85v-80q0-17 11.5-28.5T160-320h80v-480q0-33 23.5-56.5T320-880h440q33 0 56.5 23.5T840-800v240q0 17-11.5 28.5T800-520q-17 0-28.5-11.5T760-560v-240H320v480h159q23 0 31.5 20.5T503-263q-11 11-17 25.5t-6 30.5v87q0 17-11.5 28.5T440-80H240Zm320-40v-66q0-8 3-16t9-13l209-208q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L695-92q-5 5-13 8.5T666-80h-66q-17 0-28.5-11.5T560-120Zm263-184 37-39-37-37-38 38 38 38ZM400-560h280q17 0 28.5 11.5T720-520q0 17-11.5 28.5T680-480H400q-17 0-28.5-11.5T360-520q0-17 11.5-28.5T400-560Zm0-120h280q17 0 28.5 11.5T720-640q0 17-11.5 28.5T680-600H400q-17 0-28.5-11.5T360-640q0-17 11.5-28.5T400-680Z" />
-                                </svg>
-                            </div>
-                            <div style="
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"width="24px" fill="#e3e3e3"><path d="M240-80q-50 0-85-35t-35-85v-80q0-17 11.5-28.5T160-320h80v-480q0-33 23.5-56.5T320-880h440q33 0 56.5 23.5T840-800v240q0 17-11.5 28.5T800-520q-17 0-28.5-11.5T760-560v-240H320v480h159q23 0 31.5 20.5T503-263q-11 11-17 25.5t-6 30.5v87q0 17-11.5 28.5T440-80H240Zm320-40v-66q0-8 3-16t9-13l209-208q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L695-92q-5 5-13 8.5T666-80h-66q-17 0-28.5-11.5T560-120Zm263-184 37-39-37-37-38 38 38 38ZM400-560h280q17 0 28.5 11.5T720-520q0 17-11.5 28.5T680-480H400q-17 0-28.5-11.5T360-520q0-17 11.5-28.5T400-560Zm0-120h280q17 0 28.5 11.5T720-640q0 17-11.5 28.5T680-600H400q-17 0-28.5-11.5T360-640q0-17 11.5-28.5T400-680Z" /></svg>
+                                </div>
+                                <div style="
                                     display: flex;
                                     align-items: center;
                                     padding-left: 1rem;">
@@ -124,6 +111,29 @@
                             </div>
                         </button>
                     </div>
+                    <div style="
+                        padding: 1rem;
+                        text-align: center;">
+                        <button style="
+                            background-color: #fff;
+                            color: #000;"
+                            id="btnBookings">
+                            <div style="
+                                display: flex;">
+                                <div style="
+                                    display: flex;
+                                    align-items: center;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v187q0 17-11.5 28.5T800-493q-17 0-28.5-11.5T760-533v-27H200v400h232q17 0 28.5 11.5T472-120q0 17-11.5 28.5T432-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm20-208v-92q0-8-6-14t-14-6q-8 0-14 6t-6 14v91q0 8 3 15.5t9 13.5l61 61q6 6 14 6t14-6q6-6 6-14t-6-14l-61-61Z"/></svg>
+                                </div>
+                                <div style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding-left: 1rem;">
+                                    View Bookings
+                                </div>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div style="
@@ -136,67 +146,55 @@
                 bottom: 0rem;
                 overflow: auto;
                 transition: left 0.1s;" id="panelMenu">
-            <div style="
-                    display: flex;">
                 <div style="
+                    display: flex;">
+                    <div style="
                         flex: 1;
                         min-width: 0;">
+                    </div>
+                    <div style="
+                        padding: 1rem;" id="btnClose">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" /></svg>
+                    </div>
                 </div>
                 <div style="
-                        padding: 1rem;" id="btnClose">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="#1f1f1f">
-                        <path
-                            d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z" />
-                    </svg>
-                </div>
-            </div>
-            <div style="
                     padding: 1rem;
                     text-align: center;
                     border-bottom: 1px solid #555;" data-open="no">
-                <img style="
+                    <img style="
                         width: 10rem;
                         height: 10rem;
-                        object-fit: contain;" src="assets/logo.png">
-            </div>
-            <div style="
+                        object-fit: contain;" src="../assets/logo.png">
+                </div>
+                <div style="
                     display: flex;
                     border-bottom: 1px solid #555;">
-                <div style="
+                    <div style="
                         display: flex;
                         align-items: center;
                         padding: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="#1f1f1f">
-                        <path
-                            d="M160-200v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H600q-17 0-28.5-11.5T560-160v-200q0-17-11.5-28.5T520-400h-80q-17 0-28.5 11.5T400-360v200q0 17-11.5 28.5T360-120H240q-33 0-56.5-23.5T160-200Z" />
-                    </svg>
-                </div>
-                <div style="
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"fill="#1f1f1f"><path d="M160-200v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H600q-17 0-28.5-11.5T560-160v-200q0-17-11.5-28.5T520-400h-80q-17 0-28.5 11.5T400-360v200q0 17-11.5 28.5T360-120H240q-33 0-56.5-23.5T160-200Z" /></svg>
+                    </div>
+                    <div style="
                         display: flex;
                         align-items: center;
                         flex: 1;
                         min-width: 0;
                         padding: 1rem;
                         padding-left: 0rem;" id="tabHome">
-                    Home
+                        Home
+                    </div>
                 </div>
-            </div>
-            <div style="
+                <div style="
                     display: flex;
                     border-bottom: 1px solid #555;">
-                <div style="
+                    <div style="
                         display: flex;
                         align-items: center;
                         padding: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                        fill="#1f1f1f">
-                        <path
-                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z" />
-                    </svg>
-                </div>
-                <div style="
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z" /></svg>
+                    </div>
+                    <div style="
                         display: flex;
                         align-items: center;
                         flex: 1;
@@ -220,6 +218,7 @@
             const btnProfile = document.getElementById("btnProfile");
             const btnChat = document.getElementById("btnChat");
             const btnCases = document.getElementById("btnCases");
+            const btnBookings = document.getElementById("btnBookings");
             initialize();
 
             async function initialize() {
@@ -227,36 +226,37 @@
                 panelWelcome.textContent = "Hello, " + user.firstname + "!";
             }
 
-        function updatePanelMenu() {
-            if (panelMenu.dataset.open == "yes") {
-                panelMenu.style.left = "0rem";
-            } else {
-                panelMenu.style.left = "-20rem";
+            function updatePanelMenu() {
+                if (panelMenu.dataset.open == "yes") {
+                    panelMenu.style.left = "0rem";
+                } else {
+                    panelMenu.style.left = "-20rem";
+                }
             }
-        }
 
-        btnMenu.onclick = () => {
-            panelMenu.dataset.open = "yes";
-            updatePanelMenu();
-        }
+            btnMenu.onclick = () => {
+                panelMenu.dataset.open = "yes";
+                updatePanelMenu();
+            }
 
-        btnClose.onclick = () => {
-            panelMenu.dataset.open = "no";
-            updatePanelMenu();
-        }
+            btnClose.onclick = () => {
+                panelMenu.dataset.open = "no";
+                updatePanelMenu();
+            }
 
-            tabHome.onclick = () => location.href = "home.html";
+                tabHome.onclick = () => location.href = "home.html";
 
-        tabLogout.onclick = () => {
-            if (confirm("Are you sure you want to logout?") == false) return;
-            g_data.session = "";
-            g_saveData();
-            location.href = "index.html";
-        }
+            tabLogout.onclick = () => {
+                if (confirm("Are you sure you want to logout?") == false) return;
+                g_data.session = "";
+                g_saveData();
+                location.href = "index.html";
+            }
 
             btnProfile.onclick = () => location.href = "profile.html";
             btnChat.onclick = () => location.href = "chat.html";
             btnCases.onclick = () => location.href = "cases.html";
+            btnBookings.onclick = () => location.href = "bookings.html";
         </script>
     </body>
 </html>
