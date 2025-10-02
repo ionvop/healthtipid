@@ -8,6 +8,32 @@ $db = new SQLite3("database.db");
 try {
     switch ($_SERVER["REQUEST_METHOD"]) {
         case "GET":
+            if (isset($_GET["id"])) {
+                $query = <<<SQL
+                    SELECT * FROM `doctors` WHERE `id` = :id
+                SQL;
+
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(":id", $_GET["id"]);
+                $doctor = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+
+                if ($doctor == false) {
+                    http_response_code(404);
+
+                    echo json_encode([
+                        "error" => "Doctor not found"
+                    ]);
+                    
+                    exit;
+                }
+
+                echo json_encode([
+                    "doctor" => $doctor
+                ]);
+
+                exit;
+            }
+
             $headers = getallheaders();
             $session = $headers["Authorization"];
             $doctor = getDoctor($session);
