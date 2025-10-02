@@ -174,13 +174,64 @@
                 panelTimeslots.innerHTML = "";
 
                 for (const timeslot of timeslots) {
+                    let actionHtml = "";
+
+                    if (timeslot.case_id == null) {
+                        actionHtml = /*html*/`
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem;"
+                                onclick="removeTimeslot(this)"
+                                data-id="${timeslot.id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M240-440q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h480q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H240Z"/></svg>
+                            </div>
+                        `;
+                    } else {
+                        actionHtml = /*html*/`
+                            <div style="
+                                display: flex;"
+                                onclick="viewCase(this)"
+                                data-id="${timeslot.case_id}">
+                                <div style="
+                                    display: flex;
+                                    align-items: center;">
+                                    <div>
+                                        <div style="
+                                            padding: 1rem;
+                                            font-size: 0.7rem;
+                                            text-align: center;">
+                                            Urgency:
+                                        </div>
+                                        <div style="
+                                            padding: 1rem;
+                                            padding-top: 0rem;
+                                            font-size: 0.7rem;
+                                            text-align: center;"
+                                            class="urgency"
+                                            data-id="${timeslot.case_id}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 1rem;
+                                    padding-left: 0rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M240-80q-50 0-85-35t-35-85v-40q0-33 23.5-56.5T200-320h40v-480q0-33 23.5-56.5T320-880h440q33 0 56.5 23.5T840-800v600q0 50-35 85t-85 35H240Zm480-80q17 0 28.5-11.5T760-200v-600H320v480h280q33 0 56.5 23.5T680-240v40q0 17 11.5 28.5T720-160ZM400-600q-17 0-28.5-11.5T360-640q0-17 11.5-28.5T400-680h280q17 0 28.5 11.5T720-640q0 17-11.5 28.5T680-600H400Zm0 120q-17 0-28.5-11.5T360-520q0-17 11.5-28.5T400-560h280q17 0 28.5 11.5T720-520q0 17-11.5 28.5T680-480H400Z"/></svg>
+                                </div>
+                            </div>
+                        `;
+                    }
+
                     panelTimeslots.innerHTML += /*html*/`
                         <div style="
                             display: flex;
                             border-bottom: 1px solid #555;">
                             <div style="
                                 flex: 1;
-                                min-width: 0;">
+                                min-width: 0;
+                                font-size: 0.7rem;">
                                 <div style="
                                     display: flex;">
                                     <div style="
@@ -210,16 +261,46 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding: 1rem;"
-                                onclick="removeTimeslot(this)"
-                                data-id="${timeslot.id}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M240-440q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h480q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H240Z"/></svg>
-                            </div>
+                            ${actionHtml}
                         </div>
                     `
+                }
+
+                for (const timeslot of panelTimeslots.querySelectorAll(".urgency")) {
+                    updateUrgency(timeslot);
+                }
+            }
+
+            async function updateUrgency(element) {
+                let caseId = element.dataset.id;
+
+                const response = await fetch(`../api/doctor/case/?id=${caseId}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": g_data.session
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                switch (data.case.urgency) {
+                    case "low": {
+                        element.innerHTML = /*html*/`
+                            <span style="color: #0a0">Low</span>
+                        `;
+                    } break;
+                    case "medium": {
+                        element.innerHTML = /*html*/`
+                            <span style="color: #aa0">Medium</span>
+                        `;
+                    } break;
+                    case "high": {
+                        element.innerHTML = /*html*/`
+                            <span style="color: #a00">High</span>
+                        `;
+                    } break;
                 }
             }
 
@@ -244,6 +325,11 @@
                 console.log(data);
                 timeslots = data.timeslots;
                 renderTimeslots();
+            }
+
+            function viewCase(element) {
+                let id = element.dataset.id;
+                location.href = `case.html?id=${id}`;
             }
 
             btnMenu.onclick = () => location.href = "menu.html";
