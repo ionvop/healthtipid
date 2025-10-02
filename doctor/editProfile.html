@@ -132,6 +132,17 @@
                         placeholder="Say something about yourself"></textarea>
                 </div>
                 <div style="
+                    padding: 1rem;">
+                    Consultation Fee (Php)
+                </div>
+                <div style="
+                    padding: 1rem;
+                    padding-top: 0rem;">
+                    <input type="number"
+                        id="inputFee"
+                        placeholder="e.g. 10">
+                </div>
+                <div style="
                     padding: 1rem;
                     text-align: right;">
                     <button id="btnEdit">
@@ -150,6 +161,7 @@
             const inputTitle = document.getElementById("inputTitle");
             const inputExperience = document.getElementById("inputExperience");
             const inputBio = document.getElementById("inputBio");
+            const inputFee = document.getElementById("inputFee");
             const btnEdit = document.getElementById("btnEdit");
             initialize();
 
@@ -162,6 +174,7 @@
                 inputTitle.value = user.professional_title;
                 inputExperience.value = user.years_of_experience;
                 inputBio.value = user.description;
+                inputFee.value = user.consultation_fee;
             }
 
             btnBack.onclick = () => location.href = "home.html";
@@ -191,7 +204,8 @@
                         license: inputLicense.value,
                         title: inputTitle.value,
                         experience: inputExperience.value,
-                        bio: inputBio.value
+                        bio: inputBio.value,
+                        fee: inputFee.value
                     })
                 });
 
